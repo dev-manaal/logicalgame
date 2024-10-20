@@ -9,17 +9,29 @@
 <body>
     <div class="container">
         <h1>Algorithms Game</h1>
-        <button id="searchingBtn">Searching Algorithms</button>
-        <button id="sortingBtn">Sorting Algorithms</button>
+        <div class="games">
+            <div id="searchingContainer" class="gameContainer">
+                <h2>Searching Algorithms</h2>
+                <div id="searchingLevel"></div>
+                <div id="searchingProblem"></div>
+                <input type="text" id="searchingAnswer" placeholder="Enter your answer here">
+                <button id="searchingSubmit">Submit</button>
+                <div id="searchingResult"></div>
+                <button id="searchingNext" style="display: none;">Next Level</button>
+            </div>
 
-        <div id="gameArea">
-            <div id="level"></div>
-            <div id="problem"></div>
-            <input type="text" id="answer" placeholder="Enter your answer here">
-            <button id="submit">Submit</button>
-            <div id="result"></div>
-            <button id="next" style="display: none;">Next Level</button>
+            <div id="sortingContainer" class="gameContainer">
+                <h2>Sorting Algorithms</h2>
+                <div id="sortingLevel"></div>
+                <div id="sortingProblem"></div>
+                <input type="text" id="sortingAnswer" placeholder="Enter your answer here">
+                <button id="sortingSubmit">Submit</button>
+                <div id="sortingResult"></div>
+                <button id="sortingNext" style="display: none;">Next Level</button>
+            </div>
         </div>
+
+        <button id="toggleGame">Switch to Sorting Algorithms</button>
     </div>
     <script src="script.js"></script>
 </body>

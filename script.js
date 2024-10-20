@@ -54,67 +54,112 @@ const sortingProblems = [
     }
 ];
 
-let currentLevel = 1;
-let currentProblemIndex = 0;
-let currentGame = "searching"; // Default game is searching
+let currentSearchingLevel = 1;
+let currentSearchingProblemIndex = 0;
+let currentSortingLevel = 1;
+let currentSortingProblemIndex = 0;
 
-function displayProblem() {
-    let problems = currentGame === "searching" ? searchingProblems : sortingProblems;
-    const levelProblems = problems.filter(p => p.level === currentLevel);
+function displaySearchingProblem() {
+    const levelProblems = searchingProblems.filter(p => p.level === currentSearchingLevel);
     
-    if (currentProblemIndex < levelProblems.length) {
-        const problem = levelProblems[currentProblemIndex];
-        document.getElementById("level").innerText = `Level ${currentLevel}`;
-        document.getElementById("problem").innerText = problem.question;
-        document.getElementById("result").innerText = "";
-        document.getElementById("answer").value = "";
-        document.getElementById("next").style.display = "none";
-        document.getElementById("submit").disabled = false;
+    if (currentSearchingProblemIndex < levelProblems.length) {
+        const problem = levelProblems[currentSearchingProblemIndex];
+        document.getElementById("searchingLevel").innerText = `Level ${currentSearchingLevel}`;
+        document.getElementById("searchingProblem").innerText = problem.question;
+        document.getElementById("searchingResult").innerText = "";
+        document.getElementById("searchingAnswer").value = "";
+        document.getElementById("searchingNext").style.display = "none";
+        document.getElementById("searchingSubmit").disabled = false;
     } else {
-        document.getElementById("problem").innerText = "Congratulations! You've completed this level.";
-        document.getElementById("level").innerText = "";
-        document.getElementById("submit").disabled = true;
-        document.getElementById("next").style.display = "block";
+        document.getElementById("searchingProblem").innerText = "Congratulations! You've completed this level.";
+        document.getElementById("searchingLevel").innerText = "";
+        document.getElementById("searchingSubmit").disabled = true;
+        document.getElementById("searchingNext").style.display = "block";
     }
 }
 
-document.getElementById("submit").addEventListener("click", () => {
-    let problems = currentGame === "searching" ? searchingProblems : sortingProblems;
-    const userAnswer = document.getElementById("answer").value.trim();
-    const correctAnswer = problems.filter(p => p.level === currentLevel)[currentProblemIndex].answer;
+function displaySortingProblem() {
+    const levelProblems = sortingProblems.filter(p => p.level === currentSortingLevel);
+    
+    if (currentSortingProblemIndex < levelProblems.length) {
+        const problem = levelProblems[currentSortingProblemIndex];
+        document.getElementById("sortingLevel").innerText = `Level ${currentSortingLevel}`;
+        document.getElementById("sortingProblem").innerText = problem.question;
+        document.getElementById("sortingResult").innerText = "";
+        document.getElementById("sortingAnswer").value = "";
+        document.getElementById("sortingNext").style.display = "none";
+        document.getElementById("sortingSubmit").disabled = false;
+    } else {
+        document.getElementById("sortingProblem").innerText = "Congratulations! You've completed this level.";
+        document.getElementById("sortingLevel").innerText = "";
+        document.getElementById("sortingSubmit").disabled = true;
+        document.getElementById("sortingNext").style.display = "block";
+    }
+}
+
+// Search Game Logic
+document.getElementById("searchingSubmit").addEventListener("click", () => {
+    const userAnswer = document.getElementById("searchingAnswer").value.trim();
+    const correctAnswer = searchingProblems.filter(p => p.level === currentSearchingLevel)[currentSearchingProblemIndex].answer;
 
     if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
-        document.getElementById("result").innerText = "Correct!";
-        currentProblemIndex++;
-        displayProblem();
+        document.getElementById("searchingResult").innerText = "Correct!";
+        currentSearchingProblemIndex++;
+        displaySearchingProblem();
     } else {
-        document.getElementById("result").innerText = "Wrong answer, try again!";
+        document.getElementById("searchingResult").innerText = "Wrong answer, try again!";
     }
 });
 
-// Move to the next level
-document.getElementById("next").addEventListener("click", () => {
-    currentLevel++;
-    currentProblemIndex = 0;
-    displayProblem();
+// Move to the next level for searching
+document.getElementById("searchingNext").addEventListener("click", () => {
+    currentSearchingLevel++;
+    currentSearchingProblemIndex = 0;
+    displaySearchingProblem();
 });
 
-// Switch games
-document.getElementById("searchingBtn").addEventListener("click", () => {
-    currentGame = "searching";
-    currentLevel = 1;
-    currentProblemIndex = 0;
-    document.getElementById("next").style.display = "none";
-    displayProblem();
+// Sorting Game Logic
+document.getElementById("sortingSubmit").addEventListener("click", () => {
+    const userAnswer = document.getElementById("sortingAnswer").value.trim();
+    const correctAnswer = sortingProblems.filter(p => p.level === currentSortingLevel)[currentSortingProblemIndex].answer;
+
+    if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+        document.getElementById("sortingResult").innerText = "Correct!";
+        currentSortingProblemIndex++;
+        displaySortingProblem();
+    } else {
+        document.getElementById("sortingResult").innerText = "Wrong answer, try again!";
+    }
 });
 
-document.getElementById("sortingBtn").addEventListener("click", () => {
-    currentGame = "sorting";
-    currentLevel = 1;
-    currentProblemIndex = 0;
-    document.getElementById("next").style.display = "none";
-    displayProblem();
+// Move to the next level for sorting
+document.getElementById("sortingNext").addEventListener("click", () => {
+    currentSortingLevel++;
+    currentSortingProblemIndex = 0;
+    displaySortingProblem();
 });
 
-// Start the game
-displayProblem();
+// Switch Games
+document.getElementById("toggleGame").addEventListener("click", () => {
+    const searchingContainer = document.getElementById("searchingContainer");
+    const sortingContainer = document.getElementById("sortingContainer");
+
+    if (searchingContainer.style.display === "none") {
+        searchingContainer.style.display = "block";
+        sortingContainer.style.display = "none";
+        currentSearchingLevel = 1;
+        currentSearchingProblemIndex = 0;
+        displaySearchingProblem();
+        document.getElementById("toggleGame").innerText = "Switch to Sorting Algorithms";
+    } else {
+        sortingContainer.style.display = "block";
+        searchingContainer.style.display = "none";
+        currentSortingLevel = 1;
+        currentSortingProblemIndex = 0;
+        displaySortingProblem();
+        document.getElementById("toggleGame").innerText = "Switch to Searching Algorithms";
+    }
+});
+
+// Start with searching game
+displaySearchingProblem();

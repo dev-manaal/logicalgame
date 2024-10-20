@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #eef2f3;
+    background: linear-gradient(135deg, #eef2f3, #ffffff);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,19 +9,47 @@ body {
 }
 
 .container {
-    background: white;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 80%; /* Full width for a responsive design */
+    max-width: 1200px; /* Maximum width */
     padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    width: 400px;
     text-align: center;
 }
 
 h1 {
-    font-size: 2em;
+    font-size: 2.5em;
     color: #333;
     margin-bottom: 20px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.games {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.gameContainer {
+    flex: 1;
+    margin: 0 10px;
+    background: linear-gradient(145deg, #f0f4f8, #e0e6eb);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gameContainer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    font-size: 1.8em;
+    color: #007bff;
+    margin-bottom: 15px;
 }
 
 button {
@@ -34,7 +62,7 @@ button {
     font-size: 1em;
     transition: background-color 0.3s, transform 0.2s;
     margin: 5px;
-    width: 150px; /* Button width adjustment */
+    width: 160px; /* Button width adjustment */
 }
 
 button:hover {
@@ -47,19 +75,19 @@ button:disabled {
     cursor: not-allowed;
 }
 
-#result {
+#searchingResult, #sortingResult {
     margin-top: 20px;
     font-size: 1.2em;
     color: #28a745; /* Green for correct answers */
 }
 
-#level {
+#searchingLevel, #sortingLevel {
     font-size: 1.5em;
     margin: 10px 0;
     color: #007bff; /* Blue for the level display */
 }
 
-#problem {
+#searchingProblem, #sortingProblem {
     font-size: 1.1em;
     margin: 10px 0;
     color: #333;
@@ -73,6 +101,7 @@ input[type="text"] {
     border: 2px solid #007bff;
     border-radius: 5px;
     font-size: 1em;
+    transition: border-color 0.3s;
 }
 
 input[type="text"]:focus {
