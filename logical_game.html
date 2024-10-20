@@ -8,9 +8,28 @@
 </head>
 <body>
     <div class="container">
-        <h1>Algorithms Game</h1>
-        <div class="games">
-            <div id="searchingContainer" class="gameContainer">
+        <!-- Initial View with Background Image and Heading -->
+        <div id="initialContainer" class="initial-container">
+            <h1>ARRAY GAME</h1>
+            <button id="startButton">Start Game</button>
+        </div>
+
+        <!-- Tabs for the games -->
+        <div class="tabs" style="display: none;">
+            <button class="tablink" onclick="openGame('gameContainer')">Open Games</button>
+        </div>
+
+        <!-- Main Game Container (Initially hidden) -->
+        <div id="gameContainer" class="gameContainer" style="display:none;">
+            <!-- Game Tabs -->
+            <div class="gameTabs">
+                <button class="tablink" onclick="showSubGame('searchingContainer')">Searching Algorithms</button>
+                <button class="tablink" onclick="showSubGame('sortingContainer')">Sorting Algorithms</button>
+                <button class="tablink" onclick="showSubGame('twoPointerContainer')">Two-Pointer Technique</button>
+            </div>
+
+            <!-- Game Containers (Initially hidden) -->
+            <div id="searchingContainer" class="subGameContainer" style="display:none;">
                 <h2>Searching Algorithms</h2>
                 <div id="searchingLevel"></div>
                 <div id="searchingProblem"></div>
@@ -20,7 +39,7 @@
                 <button id="searchingNext" style="display: none;">Next Level</button>
             </div>
 
-            <div id="sortingContainer" class="gameContainer">
+            <div id="sortingContainer" class="subGameContainer" style="display:none;">
                 <h2>Sorting Algorithms</h2>
                 <div id="sortingLevel"></div>
                 <div id="sortingProblem"></div>
@@ -29,10 +48,19 @@
                 <div id="sortingResult"></div>
                 <button id="sortingNext" style="display: none;">Next Level</button>
             </div>
-        </div>
 
-        <button id="toggleGame">Switch to Sorting Algorithms</button>
+            <div id="twoPointerContainer" class="subGameContainer" style="display:none;">
+                <h2>Two-Pointer Technique</h2>
+                <div id="twoPointerLevel"></div>
+                <div id="twoPointerProblem"></div>
+                <input type="text" id="twoPointerAnswer" placeholder="Enter your answer here">
+                <button id="twoPointerSubmit">Submit</button>
+                <div id="twoPointerResult"></div>
+                <button id="twoPointerNext" style="display: none;">Next Level</button>
+            </div>
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

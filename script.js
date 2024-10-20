@@ -1,165 +1,141 @@
+document.getElementById("startButton").addEventListener("click", function() {
+    document.getElementById("initialContainer").style.display = "none";
+    document.getElementById("gameContainer").style.display = "block";
+});
+
+// Function to show a specific sub-game container and hide others
+function showSubGame(containerId) {
+    // Hide all sub-game containers
+    const subGameContainers = document.getElementsByClassName("subGameContainer");
+    for (let i = 0; i < subGameContainers.length; i++) {
+        subGameContainers[i].style.display = "none";
+    }
+
+    // Show the selected sub-game container
+    document.getElementById(containerId).style.display = "block";
+
+    // Reset any input fields and results
+    resetGameFields(containerId);
+
+    // Display the initial problem for the selected game
+    if (containerId === 'searchingContainer') {
+        displaySearchingProblem();
+    } else if (containerId === 'sortingContainer') {
+        displaySortingProblem();
+    } else if (containerId === 'twoPointerContainer') {
+        displayTwoPointerProblem();
+    }
+}
+
+// Reset input fields and results for each game
+function resetGameFields(containerId) {
+    const answerField = document.getElementById(containerId === 'searchingContainer' ? 'searchingAnswer' :
+        containerId === 'sortingContainer' ? 'sortingAnswer' : 'twoPointerAnswer');
+    const resultField = document.getElementById(containerId === 'searchingContainer' ? 'searchingResult' :
+        containerId === 'sortingContainer' ? 'sortingResult' : 'twoPointerResult');
+
+    answerField.value = '';
+    resultField.innerText = '';
+}
+
+// Example problem sets for Searching Algorithms
 const searchingProblems = [
-    {
-        level: 1,
-        question: "Find the index of 4 in [1, 2, 3, 4, 5] using linear search.",
-        answer: "3"
-    },
-    {
-        level: 1,
-        question: "Find the index of 5 in [5, 3, 2, 1] using linear search.",
-        answer: "0"
-    },
-    {
-        level: 2,
-        question: "Find the index of 7 in [1, 2, 3, 4, 5, 6, 7, 8, 9] using binary search.",
-        answer: "6"
-    },
-    {
-        level: 2,
-        question: "Find the index of 10 in [2, 4, 6, 8, 10] using binary search.",
-        answer: "4"
-    },
-    {
-        level: 3,
-        question: "What is the output of the following: [1, 3, 5, 7].indexOf(3)?",
-        answer: "1"
-    },
-    {
-        level: 3,
-        question: "What is the output of the following: [10, 20, 30].includes(20)? (true/false)",
-        answer: "true"
-    }
+    { level: 1, problem: "Find the number index 4 in the array: [1, 2, 3, 4, 5]", answer: "3" },
+    { level: 2, problem: "Find the number index 8 in the array: [6, 7, 8, 9]", answer: "2" }
 ];
 
-const sortingProblems = [
-    {
-        level: 1,
-        question: "What is the output of sorting [3, 1, 4, 2] using bubble sort?",
-        answer: "[1, 2, 3, 4]"
-    },
-    {
-        level: 2,
-        question: "Sort the array [5, 2, 9, 1] using selection sort.",
-        answer: "[1, 2, 5, 9]"
-    },
-    {
-        level: 3,
-        question: "What is the output of sorting [10, 7, 8, 9] using quicksort?",
-        answer: "[7, 8, 9, 10]"
-    },
-    {
-        level: 3,
-        question: "Sort the array [6, 5, 3, 1, 8] using merge sort.",
-        answer: "[1, 3, 5, 6, 8]"
-    }
-];
-
-let currentSearchingLevel = 1;
-let currentSearchingProblemIndex = 0;
-let currentSortingLevel = 1;
-let currentSortingProblemIndex = 0;
+let searchingCurrentLevel = 0;
 
 function displaySearchingProblem() {
-    const levelProblems = searchingProblems.filter(p => p.level === currentSearchingLevel);
-    
-    if (currentSearchingProblemIndex < levelProblems.length) {
-        const problem = levelProblems[currentSearchingProblemIndex];
-        document.getElementById("searchingLevel").innerText = `Level ${currentSearchingLevel}`;
-        document.getElementById("searchingProblem").innerText = problem.question;
-        document.getElementById("searchingResult").innerText = "";
-        document.getElementById("searchingAnswer").value = "";
-        document.getElementById("searchingNext").style.display = "none";
-        document.getElementById("searchingSubmit").disabled = false;
-    } else {
-        document.getElementById("searchingProblem").innerText = "Congratulations! You've completed this level.";
-        document.getElementById("searchingLevel").innerText = "";
-        document.getElementById("searchingSubmit").disabled = true;
-        document.getElementById("searchingNext").style.display = "block";
-    }
+    const problem = searchingProblems[searchingCurrentLevel];
+    document.getElementById("searchingLevel").innerText = `Level ${problem.level}`;
+    document.getElementById("searchingProblem").innerText = problem.problem;
+    document.getElementById("searchingResult").innerText = '';
+    document.getElementById("searchingAnswer").value = '';
 }
+
+// Searching Algorithms Submit
+document.getElementById("searchingSubmit").addEventListener("click", function() {
+    const answer = document.getElementById("searchingAnswer").value;
+    const correctAnswer = searchingProblems[searchingCurrentLevel].answer;
+
+    if (answer === correctAnswer) {
+        document.getElementById("searchingResult").innerText = "Correct!";
+        searchingCurrentLevel++;
+        if (searchingCurrentLevel < searchingProblems.length) {
+            displaySearchingProblem();
+        } else {
+            document.getElementById("searchingResult").innerText += " You've completed all levels!";
+        }
+    } else {
+        document.getElementById("searchingResult").innerText = "Try again!";
+    }
+});
+
+// Example problem sets for Sorting Algorithms
+const sortingProblems = [
+    { level: 1, problem: "Sort the array: [3, 1, 4, 2]", answer: "1, 2, 3, 4" },
+    { level: 2, problem: "Sort the array: [9, 7, 8, 6]", answer: "6, 7, 8, 9" }
+];
+
+let sortingCurrentLevel = 0;
 
 function displaySortingProblem() {
-    const levelProblems = sortingProblems.filter(p => p.level === currentSortingLevel);
-    
-    if (currentSortingProblemIndex < levelProblems.length) {
-        const problem = levelProblems[currentSortingProblemIndex];
-        document.getElementById("sortingLevel").innerText = `Level ${currentSortingLevel}`;
-        document.getElementById("sortingProblem").innerText = problem.question;
-        document.getElementById("sortingResult").innerText = "";
-        document.getElementById("sortingAnswer").value = "";
-        document.getElementById("sortingNext").style.display = "none";
-        document.getElementById("sortingSubmit").disabled = false;
-    } else {
-        document.getElementById("sortingProblem").innerText = "Congratulations! You've completed this level.";
-        document.getElementById("sortingLevel").innerText = "";
-        document.getElementById("sortingSubmit").disabled = true;
-        document.getElementById("sortingNext").style.display = "block";
-    }
+    const problem = sortingProblems[sortingCurrentLevel];
+    document.getElementById("sortingLevel").innerText = `Level ${problem.level}`;
+    document.getElementById("sortingProblem").innerText = problem.problem;
+    document.getElementById("sortingResult").innerText = '';
+    document.getElementById("sortingAnswer").value = '';
 }
 
-// Search Game Logic
-document.getElementById("searchingSubmit").addEventListener("click", () => {
-    const userAnswer = document.getElementById("searchingAnswer").value.trim();
-    const correctAnswer = searchingProblems.filter(p => p.level === currentSearchingLevel)[currentSearchingProblemIndex].answer;
+// Sorting Algorithms Submit
+document.getElementById("sortingSubmit").addEventListener("click", function() {
+    const answer = document.getElementById("sortingAnswer").value;
+    const correctAnswer = sortingProblems[sortingCurrentLevel].answer;
 
-    if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
-        document.getElementById("searchingResult").innerText = "Correct!";
-        currentSearchingProblemIndex++;
-        displaySearchingProblem();
-    } else {
-        document.getElementById("searchingResult").innerText = "Wrong answer, try again!";
-    }
-});
-
-// Move to the next level for searching
-document.getElementById("searchingNext").addEventListener("click", () => {
-    currentSearchingLevel++;
-    currentSearchingProblemIndex = 0;
-    displaySearchingProblem();
-});
-
-// Sorting Game Logic
-document.getElementById("sortingSubmit").addEventListener("click", () => {
-    const userAnswer = document.getElementById("sortingAnswer").value.trim();
-    const correctAnswer = sortingProblems.filter(p => p.level === currentSortingLevel)[currentSortingProblemIndex].answer;
-
-    if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+    if (answer === correctAnswer) {
         document.getElementById("sortingResult").innerText = "Correct!";
-        currentSortingProblemIndex++;
-        displaySortingProblem();
+        sortingCurrentLevel++;
+        if (sortingCurrentLevel < sortingProblems.length) {
+            displaySortingProblem();
+        } else {
+            document.getElementById("sortingResult").innerText += " You've completed all levels!";
+        }
     } else {
-        document.getElementById("sortingResult").innerText = "Wrong answer, try again!";
+        document.getElementById("sortingResult").innerText = "Try again!";
     }
 });
 
-// Move to the next level for sorting
-document.getElementById("sortingNext").addEventListener("click", () => {
-    currentSortingLevel++;
-    currentSortingProblemIndex = 0;
-    displaySortingProblem();
-});
+// Example problem sets for Two-Pointer Technique
+const twoPointerProblems = [
+    { level: 1, problem: "Find pairs that sum up to 10 in the array: [1, 2, 3, 7, 5]", answer: "3, 7" },
+    { level: 2, problem: "Find pairs that sum up to 8 in the array: [2, 4, 3, 5]", answer: "3, 5" }
+];
 
-// Switch Games
-document.getElementById("toggleGame").addEventListener("click", () => {
-    const searchingContainer = document.getElementById("searchingContainer");
-    const sortingContainer = document.getElementById("sortingContainer");
+let twoPointerCurrentLevel = 0;
 
-    if (searchingContainer.style.display === "none") {
-        searchingContainer.style.display = "block";
-        sortingContainer.style.display = "none";
-        currentSearchingLevel = 1;
-        currentSearchingProblemIndex = 0;
-        displaySearchingProblem();
-        document.getElementById("toggleGame").innerText = "Switch to Sorting Algorithms";
+function displayTwoPointerProblem() {
+    const problem = twoPointerProblems[twoPointerCurrentLevel];
+    document.getElementById("twoPointerLevel").innerText = `Level ${problem.level}`;
+    document.getElementById("twoPointerProblem").innerText = problem.problem;
+    document.getElementById("twoPointerResult").innerText = '';
+    document.getElementById("twoPointerAnswer").value = '';
+}
+
+// Two-Pointer Technique Submit
+document.getElementById("twoPointerSubmit").addEventListener("click", function() {
+    const answer = document.getElementById("twoPointerAnswer").value;
+    const correctAnswer = twoPointerProblems[twoPointerCurrentLevel].answer;
+
+    if (answer === correctAnswer) {
+        document.getElementById("twoPointerResult").innerText = "Correct!";
+        twoPointerCurrentLevel++;
+        if (twoPointerCurrentLevel < twoPointerProblems.length) {
+            displayTwoPointerProblem();
+        } else {
+            document.getElementById("twoPointerResult").innerText += " You've completed all levels!";
+        }
     } else {
-        sortingContainer.style.display = "block";
-        searchingContainer.style.display = "none";
-        currentSortingLevel = 1;
-        currentSortingProblemIndex = 0;
-        displaySortingProblem();
-        document.getElementById("toggleGame").innerText = "Switch to Searching Algorithms";
+        document.getElementById("twoPointerResult").innerText = "Try again!";
     }
 });
-
-// Start with searching game
-displaySearchingProblem();
