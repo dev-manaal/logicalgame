@@ -1,99 +1,60 @@
-/* General Styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #eef2f3, #ffffff);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-.container {
-    background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 1000px;
-    padding: 30px;
+    font-family: Arial, sans-serif;
     text-align: center;
+    background-color: #f7f7f7;
 }
 
-/* Initial Container with Background Image */
-/*.initial-container {
-    background-image: url('array.jpg'); 
-    background-size: cover;
-    background-position: center;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-}*/
-
-h1 {
-    font-size: 2.5em;
-    color: #000000;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-/* Tab Navigation Styles */
-h2 {
-    color: #007bff;
-}
-
-.tabs, .gameTabs {
-    margin: 20px 0;
-}
-
-.tablink {
-    background-color: #007bff; /* Blue background for tabs */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 0 10px;
-    transition: background-color 0.3s;
-}
-
-.tablink:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-.subGameContainer {
-    border: 2px solid #007bff; /* Blue border for distinction */
-    border-radius: 8px; /* Rounded corners */
+.page {
     padding: 20px;
-    margin: 10px 0; /* Space between boxes */
-    background-color: #ffffff; /* White background for content boxes */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    display: none; /* Initially hidden */
-}
-
-input[type="text"] {
-    width: calc(100% - 20px); /* Full width minus padding */
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
 }
 
 button {
     padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #28a745; /* Green button */
-    color: white;
+    margin: 10px;
+    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #218838; /* Darker green on hover */
+    background-color: #0056b3;
 }
 
-#searchingResult, #sortingResult, #twoPointerResult {
+.category-container, .levels-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.category-btn, .level-btn {
+    margin: 10px;
+    padding: 15px;
+    font-size: 18px;
+    background-color: #28a745;
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+
+.category-btn:hover, .level-btn:hover {
+    background-color: #218838;
+}
+
+#question {
+    font-size: 18px;
+}
+
+input[type="text"] {
+    padding: 10px;
     margin-top: 10px;
+    width: 80%;
+}
+
+#resultMessage {
     font-weight: bold;
+    margin-top: 10px;
 }
