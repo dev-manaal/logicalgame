@@ -1,76 +1,202 @@
-document.getElementById("startGameBtn").addEventListener("click", function() {
-    showPage('page2');
-});
+// script.js
+document.addEventListener('DOMContentLoaded', function () {
+    const startButton = document.getElementById('startGame');
+    const categories = document.querySelectorAll('.category-btn');
+    const gameContent = document.getElementById('gameContent');
+    const categoryTitle = document.getElementById('categoryTitle');
+    const currentLevelDisplay = document.getElementById('currentLevel');
+    const nextGameButton = document.getElementById('nextGame');
+    const hintButton = document.getElementById('hintButton');
+    const instruction = document.getElementById('instruction');
+    const submitButton = document.getElementById('submitButton');
+    const successModal = document.getElementById('successModal');
+    const closeModal = document.getElementById('closeModal');
 
-const levels = {
-    sorting: [
-        { question: "Sort the array [3, 1, 4, 2]", answer: "1,2,3,4" },
-        { question: "Sort the array [9, 5, 8, 7]", answer: "5,7,8,9" }
-    ],
-    searching: [
-        { question: "Find index of 5 in array [1, 2, 5, 7, 9]", answer: "2" },
-        { question: "Find index of 8 in array [3, 8, 12, 7]", answer: "1" }
-    ]
-};
+    let currentLevel = 1;
 
-let currentCategory = '';
-let currentLevel = 0;
+    // Start Game
+    startButton.addEventListener('click', function () {
+        document.getElementById('page1').style.display = 'none';
+        document.getElementById('page2').style.display = 'block';
+    });
 
-function openCategory(category) {
-    currentCategory = category;
-    document.getElementById('categoryTitle').innerText = category.charAt(0).toUpperCase() + category.slice(1) + ' Algorithms';
-    showPage('page3');
-    loadLevels();
-}
+    // Select Category
+    categories.forEach(category => {
+        category.addEventListener('click', function () {
+            const currentCategory = category.getAttribute('data-category');
+            categoryTitle.textContent = currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1) + ' Puzzle';
+            document.getElementById('page2').style.display = 'none';
+            document.getElementById('page3').style.display = 'block';
+            loadMiniGame(currentCategory);
+        });
+    });
 
-function loadLevels() {
-    const levelsContainer = document.getElementById("levelsContainer");
-    levelsContainer.innerHTML = ''; // Clear previous levels
-    const categoryLevels = levels[currentCategory];
+    // Load Mini Game based on selected category
+    function loadMiniGame(category) {
+        gameContent.innerHTML = ''; // Clear previous game content
+        nextGameButton.style.display = 'none'; // Hide next game button
+        hintButton.style.display = 'none'; // Hide hint button
+        submitButton.style.display = 'none'; // Hide submit button
+        instruction.style.display = 'none'; // Hide instruction
+        currentLevelDisplay.textContent = currentLevel; // Update current level display
 
-    for (let i = 0; i < categoryLevels.length; i++) {
-        const levelBtn = document.createElement('button');
-        levelBtn.classList.add('level-btn');
-        levelBtn.innerText = `Level ${i + 1}`;
-        levelBtn.onclick = () => startLevel(i);
-        levelsContainer.appendChild(levelBtn);
+        switch (category) {
+            case 'array':
+                arrayPuzzle();
+                break;
+            case 'linkedlist':
+                linkedListPuzzle();
+                break;
+            case 'stack':
+                stackPuzzle();
+                break;
+            case 'queue':
+                queuePuzzle();
+                break;
+            case 'tree':
+                treePuzzle();
+                break;
+            case 'graph':
+                graphPuzzle();
+                break;
+        }
     }
-}
 
-function startLevel(levelIndex) {
-    currentLevel = levelIndex;
-    const levelData = levels[currentCategory][currentLevel];
-    document.getElementById('levelTitle').innerText = `Level ${currentLevel + 1}`;
-    document.getElementById('question').innerText = levelData.question;
-    document.getElementById('answerInput').value = '';
-    document.getElementById('resultMessage').innerText = '';
-    document.getElementById('nextLevelBtn').style.display = 'none';
-    showPage('page4');
-}
+    // Array Puzzle
+    function arrayPuzzle() {
+        const array = Array.from({ length: currentLevel + 2 }, () => Math.floor(Math.random() * 100));
+        const puzzleArea = document.createElement('div');
+        puzzleArea.classList.add('puzzle-area');
+        puzzleArea.setAttribute('id', 'puzzleArea');
 
-document.getElementById('submitAnswerBtn').addEventListener('click', function() {
-    const userAnswer = document.getElementById('answerInput').value;
-    const correctAnswer = levels[currentCategory][currentLevel].answer;
+        array.forEach(num => {
+            const item = document.createElement('div');
+            item.classList.add('puzzle-item');
+            item.setAttribute('draggable', true);
+            item.textContent = num;
 
-    if (userAnswer === correctAnswer) {
-        document.getElementById('resultMessage').innerText = 'Correct!';
-        document.getElementById('nextLevelBtn').style.display = 'inline';
-    } else {
-        document.getElementById('resultMessage').innerText = 'Try Again!';
+            item.addEventListener('dragstart', () => {
+                item.classList.add('dragging');
+            });
+
+            item.addEventListener('dragend', () => {
+                item.classList.remove('dragging');
+            });
+
+            puzzleArea.appendChild(item);
+        });
+
+        // Drop Area
+        puzzleArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            const draggingItem = document.querySelector('.dragging');
+            const afterElement = getDragAfterElement(puzzleArea, e.clientY);
+            if (afterElement == null) {
+                puzzleArea.appendChild(draggingItem);
+            } else {
+                puzzleArea.insertBefore(draggingItem, afterElement);
+            }
+        });
+
+        gameContent.appendChild(puzzleArea);
+        checkSortedArray(array);
+        showInstructions("Drag and drop the numbers to sort the array in ascending order!");
+
+        hintButton.style.display = 'block'; // Show hint button
+        submitButton.style.display = 'block'; // Show submit button
+    }
+
+    function getDragAfterElement(container, y) {
+        const draggableElements = [...container.querySelectorAll('.puzzle-item:not(.dragging)')];
+
+        return draggableElements.reduce((closest, child) => {
+            const box = child.getBoundingClientRect();
+            const offset = y - box.top - box.height / 2;
+            if (offset < 0 && offset > closest.offset) {
+                return { offset: offset, element: child };
+            } else {
+                return closest;
+            }
+        }, { offset: Number.NEGATIVE_INFINITY }).element;
+    }
+
+    // Check if the array is sorted
+    function checkSortedArray(originalArray) {
+        submitButton.addEventListener('click', () => {
+            const items = Array.from(document.querySelectorAll('.puzzle-item'));
+            const sortedArray = items.map(item => Number(item.textContent));
+            if (JSON.stringify(sortedArray) === JSON.stringify(originalArray.sort((a, b) => a - b))) {
+                showSuccessModal();
+                document.getElementById('levelCompleted').textContent = currentLevel; // Display completed level
+            } else {
+                alert("Try again! The array is not sorted correctly.");
+            }
+        });
+    }
+
+    // Show Instructions
+    function showInstructions(text) {
+        instruction.textContent = text;
+        instruction.style.display = 'block';
+    }
+
+    // Show Success Modal
+    function showSuccessModal() {
+        successModal.style.display = 'block';
+        nextGameButton.style.display = 'block'; // Show next challenge button
+    }
+
+    // Close Modal
+    closeModal.addEventListener('click', function () {
+        successModal.style.display = 'none';
+        currentLevel++; // Move to the next level
+        loadMiniGame(categoryTitle.textContent.split(' ')[0].toLowerCase()); // Load next level
+    });
+
+    // Move to Next Challenge
+    nextGameButton.addEventListener('click', function () {
+        successModal.style.display = 'none'; // Hide success modal
+        currentLevel++; // Move to the next level
+        loadMiniGame(categoryTitle.textContent.split(' ')[0].toLowerCase()); // Load next level
+    });
+
+    // Close modal when clicking outside of it
+    window.addEventListener('click', function (event) {
+        if (event.target === successModal) {
+            successModal.style.display = 'none';
+            currentLevel++; // Move to the next level
+            loadMiniGame(categoryTitle.textContent.split(' ')[0].toLowerCase()); // Load next level
+        }
+    });
+
+    // Placeholder functions for Linked List, Stack, Tree, and Graph
+    function linkedListPuzzle() {
+        showInstructions("Linked List puzzles will be available soon!");
+        hintButton.style.display = 'none'; // Hide hint button
+        submitButton.style.display = 'none'; // Hide submit button
+    }
+
+    function stackPuzzle() {
+        showInstructions("Stack puzzles will be available soon!");
+        hintButton.style.display = 'none'; // Hide hint button
+        submitButton.style.display = 'none'; // Hide submit button
+    }
+
+    function queuePuzzle() {
+        showInstructions("Queue puzzles will be available soon!");
+        hintButton.style.display = 'none'; // Hide hint button
+        submitButton.style.display = 'none'; // Hide submit button
+    }
+
+    function treePuzzle() {
+        showInstructions("Tree puzzles will be available soon!");
+        hintButton.style.display = 'none'; // Hide hint button
+        submitButton.style.display = 'none'; // Hide submit button
+    }
+
+    function graphPuzzle() {
+        showInstructions("Graph puzzles will be available soon!");
+        hintButton.style.display = 'none'; // Hide hint button
+        submitButton.style.display = 'none'; // Hide submit button
     }
 });
-
-document.getElementById('nextLevelBtn').addEventListener('click', function() {
-    if (currentLevel < levels[currentCategory].length - 1) {
-        startLevel(currentLevel + 1);
-    } else {
-        document.getElementById('resultMessage').innerText = 'You have completed all levels!';
-        document.getElementById('nextLevelBtn').style.display = 'none';
-    }
-});
-
-function showPage(pageId) {
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(page => page.style.display = 'none');
-    document.getElementById(pageId).style.display = 'block';
-}

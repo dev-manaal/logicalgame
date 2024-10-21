@@ -3,38 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Array Game</title>
+    <title>Data Structure Puzzle Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="page1" class="page">
-        <h1>Array Game</h1>
-        <button id="startGameBtn">Start Game</button>
+        <h1>Welcome to Data Structure Puzzle Game!</h1>
+        <button id="startGame">Start Game</button>
     </div>
 
-    <div id="page2" class="page" style="display:none;">
-        <h2>Choose a Category</h2>
-        <div class="category-container">
-            <button class="category-btn" onclick="openCategory('sorting')">Sorting Algorithms</button>
-            <button class="category-btn" onclick="openCategory('searching')">Searching Algorithms</button>
-            <!-- Add more categories if needed -->
+    <div id="page2" class="page" style="display: none;">
+        <h2>Select a Category</h2>
+        <div class="category">
+            <button class="category-btn" data-category="array">Array</button>
+            <button class="category-btn" data-category="linkedlist">Linked List</button>
+            <button class="category-btn" data-category="stack">Stack</button>
+            <button class="category-btn" data-category="queue">Queue</button>
+            <button class="category-btn" data-category="tree">Tree</button>
+            <button class="category-btn" data-category="graph">Graph</button>
         </div>
     </div>
 
-    <div id="page3" class="page" style="display:none;">
-        <h2 id="categoryTitle">Levels</h2>
-        <div class="levels-container" id="levelsContainer">
-            <!-- Levels will be dynamically generated here -->
-        </div>
+    <div id="page3" class="page" style="display: none;">
+        <h2 id="categoryTitle"></h2>
+        <h3>Level: <span id="currentLevel"></span></h3>
+        <div id="gameContent"></div>
+        <div id="instruction" class="instruction" style="display:none;"></div>
+        <button id="hintButton" style="display:none;">Show Hint</button>
+        <button id="submitButton" style="display:none;">Submit</button>
     </div>
 
-    <div id="page4" class="page" style="display:none;">
-        <h2 id="levelTitle">Level 1</h2>
-        <p id="question">Question will be displayed here</p>
-        <input type="text" id="answerInput" placeholder="Enter your answer">
-        <button id="submitAnswerBtn">Submit Answer</button>
-        <p id="resultMessage"></p>
-        <button id="nextLevelBtn" style="display:none;">Next Level</button>
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Congratulations!</h2>
+            <div class="star">⭐</div>
+            <p>You completed Level <span id="levelCompleted"></span>!</p>
+            <button id="nextGame">Next Challenge</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
