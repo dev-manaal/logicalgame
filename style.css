@@ -167,6 +167,11 @@ button:hover {
         height: 50px;
         font-size: 18px;
     }
+    .puzzle-item.dragging {
+        opacity: 0.5; /* Makes the dragging item transparent */
+        cursor: grabbing; /* Change cursor to grabbing */
+        z-index: 100; /* Bring the item above others */
+    }
 
     .instruction {
         font-size: 16px;
