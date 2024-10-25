@@ -3,45 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Structure Puzzle Game</title>
     <link rel="stylesheet" href="style.css">
+    <title>Puzzle Game - Linked List & Array</title>
 </head>
 <body>
-    <div id="page1" class="page">
-        <h1>Welcome to Data Structure Puzzle Game!</h1>
-        <button id="startGame">Start Game</button>
-    </div>
-
-    <div id="page2" class="page" style="display: none;">
-        <h2>Select a Category</h2>
-        <div class="category">
-            <button class="category-btn" data-category="array">Array</button>
-            <button class="category-btn" data-category="linkedlist">Linked List</button>
-            <button class="category-btn" data-category="stack">Stack</button>
-            <button class="category-btn" data-category="queue">Queue</button>
-            <button class="category-btn" data-category="tree">Tree</button>
-            <button class="category-btn" data-category="graph">Graph</button>
+    <div class="container">
+        <h1>Puzzle Challenge: Linked List & Array</h1>
+        <div id="game-selection">
+            <button id="linkedlist-game-button">Linked List Puzzle</button>
+            <button id="array-game-button">Array Puzzle</button>
         </div>
     </div>
 
-    <div id="page3" class="page" style="display: none;">
-        <h2 id="categoryTitle"></h2>
-        <h3>Level: <span id="currentLevel"></span></h3>
-        <div id="gameContent"></div>
-        <div id="instruction" class="instruction" style="display:none;"></div>
-        <button id="hintButton" style="display:none;">Show Hint</button>
-        <button id="submitButton" style="display:none;">Submit</button>
+    <div id="linkedlist-container" class="puzzle-container" style="display: none;">
+        <h2>Linked List Puzzle</h2>
+        <p id="linkedlist-instructions">Instructions will appear here</p>
+        <div id="linkedlist-puzzle" class="puzzle-board"></div>
+        <button id="linkedlist-check-solution" class="action-button">Check Solution</button>
+        <button id="linkedlist-next-puzzle" class="action-button">Next Puzzle</button>
+        <button id="linkedlist-reset-button" class="action-button">Reset Puzzle</button>
+        <p id="linkedlist-status"></p>
     </div>
 
-    <!-- Success Modal -->
-    <div id="successModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeModal">&times;</span>
-            <h2>Congratulations!</h2>
-            <div class="star">⭐</div>
-            <p>You completed Level <span id="levelCompleted"></span>!</p>
-            <button id="nextGame">Next Challenge</button>
-        </div>
+    <div id="array-container" class="puzzle-container" style="display: none;">
+        <h2>Array Puzzle</h2>
+        <p id="array-instructions">Instructions will appear here</p>
+        <div id="array-puzzle" class="puzzle-board"></div>
+        <button id="array-check-solution" class="action-button">Check Solution</button>
+        <button id="array-next-puzzle" class="action-button">Next Puzzle</button>
+        <button id="array-reset-button" class="action-button">Reset Puzzle</button>
+        <p id="array-status"></p>
     </div>
 
     <script src="script.js"></script>
