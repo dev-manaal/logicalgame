@@ -1,69 +1,68 @@
-let currentPuzzleType = null;
-let currentPuzzleIndex = 0;
+// Wait for the DOM to load
+document.addEventListener("DOMContentLoaded", function() {
+    // Splash screen hides after 5 seconds
+    setTimeout(() => {
+        document.getElementById("splash-screen").style.display = "none";
+        document.getElementById("username-popup").classList.add("active");
+    }, 5000);
 
-const linkedListPuzzles = [
-    { order: [1, 2, 3, 4, 5], start: [5, 3, 1, 4, 2], instruction: "Arrange Linked List in ascending order!" },
-    { order: [5, 4, 3, 2, 1], start: [1, 3, 5, 4, 2], instruction: "Arrange Linked List in descending order!" }
-];
-
-const arrayPuzzles = [
-    { order: [2, 4, 6, 8, 10], start: [10, 2, 4, 8, 6], instruction: "Arrange Array in ascending order!" },
-    { order: [9, 7, 5, 3, 1], start: [1, 3, 7, 9, 5], instruction: "Arrange Array in descending order!" }
-];
-
-document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("linkedlist-game-button").addEventListener("click", () => startGame("linkedlist"));
-    document.getElementById("array-game-button").addEventListener("click", () => startGame("array"));
-    document.getElementById("linkedlist-check-solution").addEventListener("click", () => checkSolution("linkedlist"));
-    document.getElementById("array-check-solution").addEventListener("click", () => checkSolution("array"));
-    document.getElementById("linkedlist-next-puzzle").addEventListener("click", () => nextPuzzle("linkedlist"));
-    document.getElementById("array-next-puzzle").addEventListener("click", () => nextPuzzle("array"));
-    document.getElementById("linkedlist-reset-button").addEventListener("click", () => resetPuzzle("linkedlist"));
-    document.getElementById("array-reset-button").addEventListener("click", () => resetPuzzle("array"));
+    // Username submission
+    document.querySelector("#username-popup button").addEventListener("click", submitUsername);
 });
 
-function startGame(type) {
-    currentPuzzleType = type;
-    currentPuzzleIndex = 0;
-
-    document.getElementById("linkedlist-container").style.display = type === "linkedlist" ? "block" : "none";
-    document.getElementById("array-container").style.display = type === "array" ? "block" : "none";
-
-    loadPuzzle(currentPuzzleIndex);
-}
-
-function loadPuzzle(index) {
-    const puzzle = currentPuzzleType === "linkedlist" ? linkedListPuzzles[index] : arrayPuzzles[index];
-    const puzzleContainer = document.getElementById(`${currentPuzzleType}-puzzle`);
-    document.getElementById(`${currentPuzzleType}-instructions`).innerText = puzzle.instruction;
-    document.getElementById(`${currentPuzzleType}-status`).innerText = "";
-
-    puzzleContainer.innerHTML = "";
-    puzzle.start.forEach(num => {
-        const node = document.createElement("div");
-        node.className = "node";
-        node.innerText = num;
-        puzzleContainer.appendChild(node);
-    });
-}
-
-function checkSolution(type) {
-    const puzzle = type === "linkedlist" ? linkedListPuzzles[currentPuzzleIndex] : arrayPuzzles[currentPuzzleIndex];
-    const puzzleContainer = document.getElementById(`${type}-puzzle`);
-    const nodes = Array.from(puzzleContainer.children).map(node => parseInt(node.innerText));
-
-    if (JSON.stringify(nodes) === JSON.stringify(puzzle.order)) {
-        document.getElementById(`${type}-status`).innerText = "Correct!";
+function submitUsername() {
+    const username = document.getElementById("username").value;
+    if (username) {
+        document.getElementById("username-popup").classList.remove("active");
+        document.getElementById("category-screen").classList.add("active");
     } else {
-        document.getElementById(`${type}-status`).innerText = "Try Again!";
+        alert("Please enter a username.");
     }
 }
 
-function nextPuzzle(type) {
-    currentPuzzleIndex = (currentPuzzleIndex + 1) % (type === "linkedlist" ? linkedListPuzzles.length : arrayPuzzles.length);
-    loadPuzzle(currentPuzzleIndex);
+// Open level selection screen
+function openLevelScreen() {
+    document.getElementById("category-screen").classList.remove("active");
+    document.getElementById("level-screen").classList.add("active");
 }
 
-function resetPuzzle(type) {
-    loadPuzzle(currentPuzzleIndex);
+// Start a specific level
+function startLevel(level) {
+    document.getElementById("level-number").innerText = level;
+    document.getElementById("level-screen").classList.remove("active");
+    document.getElementById("problem-screen").classList.add("active");
+
+    // Set question based on level
+    if (level === 1) {
+        document.getElementById("problem-text").innerText = "Arrange the ARRAY in ascending order";
+    } else if (level === 2) {
+        document.getElementById("problem-text").innerText = "Arrange the ARRAY in descending order";
+    }
+}
+
+// Check answer
+function checkAnswer() {
+    const level = parseInt(document.getElementById("level-number").innerText);
+    const answer = document.getElementById("answer").value.trim();
+
+    // Correct answers for level 1 and 2
+    const correctAnswers = {
+        1: "1,2,3,4,5",
+        2: "5,4,3,2,1"
+    };
+
+    // Verify answer
+    if (answer === correctAnswers[level]) {
+        document.getElementById("feedback-message").innerText = "Congrats! 🎉";
+        document.getElementById("feedback-popup").classList.add("active");
+    } else {
+        alert("Wrong answer, try again!");
+    }
+}
+
+// Move to the next level
+function nextLevel() {
+    document.getElementById("feedback-popup").classList.remove("active");
+    document.getElementById("problem-screen").classList.remove("active");
+    document.getElementById("level-screen").classList.add("active");
 }

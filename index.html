@@ -3,36 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logical Game</title>
     <link rel="stylesheet" href="style.css">
-    <title>Puzzle Game - Linked List & Array</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Puzzle Challenge: Linked List & Array</h1>
-        <div id="game-selection">
-            <button id="linkedlist-game-button">Linked List Puzzle</button>
-            <button id="array-game-button">Array Puzzle</button>
+
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <img src="logo (2).png" alt="Game Logo">
+    </div>
+
+    <!-- Username Input Popup -->
+    <div id="username-popup" class="popup">
+        <h2>Enter Your Name</h2>
+        <input type="text" id="username" placeholder="Username - Your Name">
+        <button>Submit</button>
+    </div>
+
+    <!-- Category Selection -->
+    <div id="category-screen" class="screen">
+        <h2>Select a Category</h2>
+        <div class="categories">
+            <div class="category" onclick="openLevelScreen()">Array</div>
+            <div class="category" onclick="openLevelScreen()">LinkedList</div>
+            <div class="category coming-soon">Stack</div>
+            <div class="category coming-soon">Queue</div>
+            <div class="category coming-soon">Tree</div>
+            <div class="category coming-soon">Graph</div>
         </div>
     </div>
 
-    <div id="linkedlist-container" class="puzzle-container" style="display: none;">
-        <h2>Linked List Puzzle</h2>
-        <p id="linkedlist-instructions">Instructions will appear here</p>
-        <div id="linkedlist-puzzle" class="puzzle-board"></div>
-        <button id="linkedlist-check-solution" class="action-button">Check Solution</button>
-        <button id="linkedlist-next-puzzle" class="action-button">Next Puzzle</button>
-        <button id="linkedlist-reset-button" class="action-button">Reset Puzzle</button>
-        <p id="linkedlist-status"></p>
+    <!-- Level Selector -->
+    <div id="level-screen" class="screen">
+        <h2>Select a Level</h2>
+        <div class="levels">
+            <button onclick="startLevel(1)">1</button>
+            <button onclick="startLevel(2)">2</button>
+            <button onclick="startLevel(3)">3</button>
+            <button onclick="startLevel(4)">4</button>
+            <button onclick="startLevel(5)">5</button>
+            <button onclick="startLevel(6)">6</button>
+            <button onclick="startLevel(7)">7</button>
+            <button onclick="startLevel(8)">8</button>
+            <button onclick="startLevel(9)">9</button>
+            <button onclick="startLevel(10)">10</button>
+            <button onclick="startLevel(11)">11</button>
+            <button onclick="startLevel(12)">12</button>
+            <button onclick="startLevel(13)">13</button>
+            <button onclick="startLevel(14)">14</button>
+            <button onclick="startLevel(15)">15</button>
+            <button onclick="startLevel(16)">16</button>
+            <button onclick="startLevel(17)">17</button>
+            <button onclick="startLevel(18)">18</button>
+            <button onclick="startLevel(19)">19</button>
+            <button onclick="startLevel(20)">20</button>
+            <button onclick="startLevel(21)">21</button>
+            <button onclick="startLevel(22)">22</button>
+            <button onclick="startLevel(23)">23</button>
+            <button onclick="startLevel(24)">24</button>
+            <button onclick="startLevel(25)">25</button>
+            <button onclick="startLevel(26)">26</button>
+            <button onclick="startLevel(27)">27</button>
+            <button onclick="startLevel(28)">28</button>
+            <button onclick="startLevel(29)">29</button>
+            <button onclick="startLevel(30)">30</button>
+            <button onclick="startLevel(31)">31</button>
+            <button onclick="startLevel(32)">32</button>
+            <button onclick="startLevel(33)">33</button>
+            <button onclick="startLevel(34)">34</button>
+            <button onclick="startLevel(35)">35</button>
+            <button onclick="startLevel(36)">36</button>
+            <button onclick="startLevel(37)">37</button>
+            <button onclick="startLevel(38)">38</button>
+            <button onclick="startLevel(39)">39</button>
+            <button onclick="startLevel(40)">40</button>
+            <button onclick="startLevel(41)">41</button>
+            <button onclick="startLevel(42)">42</button>
+            <button onclick="startLevel(43)">43</button>
+            <button onclick="startLevel(44)">44</button>
+            <button onclick="startLevel(45)">45</button>
+            <button onclick="startLevel(46)">46</button>
+            <button onclick="startLevel(47)">47</button>
+            <button onclick="startLevel(48)">48</button>
+            <button onclick="startLevel(49)">49</button>
+            <button onclick="startLevel(50)">50</button>
+            <!-- Add more levels as needed -->
+        </div>
     </div>
 
-    <div id="array-container" class="puzzle-container" style="display: none;">
-        <h2>Array Puzzle</h2>
-        <p id="array-instructions">Instructions will appear here</p>
-        <div id="array-puzzle" class="puzzle-board"></div>
-        <button id="array-check-solution" class="action-button">Check Solution</button>
-        <button id="array-next-puzzle" class="action-button">Next Puzzle</button>
-        <button id="array-reset-button" class="action-button">Reset Puzzle</button>
-        <p id="array-status"></p>
+    <!-- Problem Screen -->
+    <div id="problem-screen" class="screen">
+        <h2>Level <span id="level-number"></span></h2>
+        <p id="problem-text">Arrange the ARRAY</p>
+        <input type="text" id="answer" placeholder="Your answer here">
+        <button onclick="checkAnswer()">Submit</button>
+    </div>
+
+    <!-- Feedback Popup -->
+    <div id="feedback-popup" class="popup">
+        <p id="feedback-message">Congrats!</p>
+        <button onclick="nextLevel()">Next Level</button>
     </div>
 
     <script src="script.js"></script>

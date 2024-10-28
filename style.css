@@ -1,117 +1,222 @@
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+/* General Reset */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
-.container {
-    text-align: center;
-    max-width: 700px;
-    padding: 30px;
-    border-radius: 15px;
-    background: #ffffff;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    animation: fadeIn 1.2s ease-in-out;
+/* Body Styling */
+body {
+    background-color: #0e1a40; /* Dark blue background */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
 }
 
-.puzzle-container {
-    text-align: center;
+/* Splash Screen */
+#splash-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0e1a40;
+}
+
+#splash-screen img {
+    width: 120px;
+}
+
+/* Popup Styling */
+.popup {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1a274b;
     padding: 20px;
-    border-radius: 15px;
-    background-color: #f4f4f4;
-    margin: 15px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.puzzle-board {
-    display: flex;
-    gap: 10px;
-    margin: 20px 0;
-    justify-content: center;
-}
-
-.node {
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #4b9cd3;
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: bold;
     border-radius: 10px;
-    cursor: grab;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 90%;
+    max-width: 300px;
 }
 
-.node:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+.popup.active {
+    display: block;
 }
 
-.action-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    margin: 10px 5px;
-    font-weight: bold;
+.popup h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.popup input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
     border: none;
-    border-radius: 8px;
-    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    background-color: #0e1a40;
     color: #fff;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
-#linkedlist-check-solution,
-#linkedlist-next-puzzle,
-#linkedlist-reset-button {
-    background-color: #007bff;
+.popup button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #0e1a40;
+    background-color: #ffd700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-#array-check-solution,
-#array-next-puzzle,
-#array-reset-button {
+.popup button:hover {
     background-color: #ffc107;
 }
 
-#game-selection button {
-    padding: 12px 20px;
-    font-size: 16px;
-    margin: 5px;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    color: #fff;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+/* Screen Styling */
+.screen {
+    display: none;
+    text-align: center;
 }
 
-#linkedlist-game-button {
-    background-color: #007bff;
+.screen.active {
+    display: block;
 }
-#array-game-button {
+
+/* Category Screen */
+#category-screen h2,
+#level-screen h2 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+/* .categories, */
+.levels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 5px;
+    justify-items: center;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    height: 100vh;
+}
+
+.category,
+.levels button {
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #0e1a40;
+    background-color: #ffd700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: none;
+    width: 90%;
+}
+
+.category:hover,
+.levels button:hover {
     background-color: #ffc107;
 }
 
-#instructions, #status {
-    margin-top: 20px;
-    font-size: 1.1em;
-    font-weight: bold;
-    color: #555;
+.category.coming-soon {
+    background-color: #a9a9a9;
+    color: #fff;
+    cursor: not-allowed;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
+/* Problem Screen */
+#problem-screen {
+    padding: 15px;
+}
+
+#problem-text {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+#problem-screen input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    background-color: #0e1a40;
+    color: #fff;
+    text-align: center;
+}
+
+#problem-screen button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #0e1a40;
+    background-color: #ffd700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#problem-screen button:hover {
+    background-color: #ffc107;
+}
+
+/* Feedback Popup */
+#feedback-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1a274b;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 80%;
+    max-width: 250px;
+}
+
+#feedback-popup p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+#feedback-popup button {
+    padding: 8px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #0e1a40;
+    background-color: #ffd700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#feedback-popup button:hover {
+    background-color: #ffc107;
 }
