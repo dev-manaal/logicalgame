@@ -1,222 +1,253 @@
-/* General Reset */
+/* Reset some default browser styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
 }
 
-/* Body Styling */
+/* Body styling */
 body {
-    background-color: #0e1a40; /* Dark blue background */
-    color: #fff;
+    font-family: Arial, sans-serif;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
+    background-color: #2a3b8a; /* Darker Blue Background */
+    color: #333;
 }
 
-/* Splash Screen */
-#splash-screen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #0e1a40;
+/* Logo styling */
+#logo {
+    width: 80px; /* Adjusted for mobile */
+    margin-top: 20px;
+    display: block;
 }
 
-#splash-screen img {
-    width: 120px;
-}
-
-/* Popup Styling */
-.popup {
-    display: none;
+/* Popup styling */
+#popup {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #1a274b;
-    padding: 20px;
+    background-color: #fefae0; /* Light Olive Background */
+    padding: 15px; /* Adjusted for mobile */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
     text-align: center;
-    width: 90%;
-    max-width: 300px;
+    width: 90%; /* Responsive width */
+    max-width: 400px; /* Max width for larger screens */
 }
 
-.popup.active {
-    display: block;
-}
-
-.popup h2 {
-    font-size: 1.2rem;
+#popup h2 {
     margin-bottom: 15px;
+    font-size: 1.2em; /* Adjusted for mobile */
+    color: #3d3d3d; /* Dark Grey for readability */
 }
 
-.popup input[type="text"] {
-    width: 100%;
+#popup input {
+    width: 90%; /* Responsive input width */
     padding: 8px;
     margin-bottom: 10px;
-    border: none;
+    border: 1px solid #333;
     border-radius: 5px;
-    font-size: 1rem;
-    outline: none;
-    background-color: #0e1a40;
-    color: #fff;
-    text-align: center;
+    font-size: 0.9em; /* Smaller font size for mobile */
 }
 
-.popup button {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #0e1a40;
-    background-color: #ffd700;
+#popup button {
+    padding: 8px 16px;
+    background-color: #b5a642; /* Bold Olive */
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 1em;
 }
 
-.popup button:hover {
-    background-color: #ffc107;
+#popup button:hover {
+    background-color: #9e8d36; /* Slightly Darker Olive */
 }
 
-/* Screen Styling */
-.screen {
-    display: none;
+/* Greeting styling */
+#greeting {
+    font-size: 1.2em;
+    margin-top: 15px;
+    color: #fefae0; /* Light Olive */
+}
+
+/* Container for data structure selection */
+#container {
+    margin-top: 20px;
+    width: 90%; /* Responsive width */
+    max-width: 600px; /* Max width for larger screens */
     text-align: center;
 }
 
-.screen.active {
-    display: block;
-}
-
-/* Category Screen */
-#category-screen h2,
-#level-screen h2 {
-    font-size: 1.4rem;
+#container h2 {
+    font-size: 1.5em;
     margin-bottom: 15px;
+    color: #fefae0; /* Light Olive */
 }
 
-/* .categories, */
-.levels {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+/* Array button styling */
+#arrayContainer {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    flex-wrap: wrap; /* Allow wrapping for mobile */
+}
+
+#arrayContainer button {
+    background-color: #fefae0; /* Light Olive */
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+    margin: 5px; /* Margin for spacing on mobile */
+}
+
+#arrayContainer button:hover {
+    transform: scale(1.1);
+}
+
+#arrayContainer button img {
+    width: 70px; /* Adjusted for mobile */
+    height: auto;
+}
+
+/* Puzzle container */
+#puzzleContainer {
+    margin-top: 20px;
+    padding: 15px; /* Adjusted for mobile */
+    border: 2px solid #333;
+    border-radius: 10px;
+    background-color: #fefae0; /* Light Olive */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%; /* Responsive width */
+    max-width: 600px; /* Max width for larger screens */
+}
+
+#puzzleContainer h2 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+#puzzleQuestion {
+    font-size: 1em; /* Adjusted for mobile */
+    margin-bottom: 15px;
+    text-align: center;
+    color: #555;
+}
+
+#puzzleContainer button {
+    padding: 8px 16px;
+    background-color: #ffd700; /* Bold Yellow */
+    color: #000; /* Black text for contrast */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%; /* Full width on mobile */
+}
+
+#puzzleContainer button:hover {
+    background-color: #e5c400; /* Slightly Darker Bold Yellow */
+}
+
+#puzzleResult {
+    margin-top: 15px;
+    font-size: 1em;
+    color: #6a5937; /* Olive-Brown */
+    font-weight: bold;
+}
+
+/* Result message */
+#result {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #ffd700; /* Bold Yellow */
+}
+
+/* Array display */
+#arrayContainer {
+    display: flex;
+    flex-wrap: wrap;
     gap: 10px;
-    padding: 5px;
-    justify-items: center;
-    overflow-y: scroll;
-    scrollbar-width: none;
-    scroll-behavior: smooth;
-    height: 100vh;
+    margin-top: 20px;
+    justify-content: center;
 }
 
-.category,
-.levels button {
-    padding: 12px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #0e1a40;
-    background-color: #ffd700;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: none;
-    width: 90%;
-}
-
-.category:hover,
-.levels button:hover {
-    background-color: #ffc107;
-}
-
-.category.coming-soon {
-    background-color: #a9a9a9;
+.arrayBlock {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4a80c6; /* Medium Blue */
+    border: 1px solid #333;
+    border-radius: 5px;
+    font-size: 1.2em;
     color: #fff;
-    cursor: not-allowed;
-}
-
-/* Problem Screen */
-#problem-screen {
-    padding: 15px;
-}
-
-#problem-text {
-    font-size: 1rem;
-    margin-bottom: 15px;
-}
-
-#problem-screen input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    outline: none;
-    background-color: #0e1a40;
-    color: #fff;
-    text-align: center;
-}
-
-#problem-screen button {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #0e1a40;
-    background-color: #ffd700;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    cursor: grab;
     transition: background-color 0.3s;
 }
 
-#problem-screen button:hover {
-    background-color: #ffc107;
+.arrayBlock:active {
+    background-color: #3a6eb5; /* Darker Blue on Active */
 }
 
-/* Feedback Popup */
-#feedback-popup {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #1a274b;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    width: 80%;
-    max-width: 250px;
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    #logo {
+        width: 70px; /* Adjust logo size for mobile */
+    }
+
+    #popup h2 {
+        font-size: 1.2em; /* Adjust heading size */
+    }
+
+    #popup input {
+        font-size: 0.9em; /* Smaller font size for mobile */
+    }
+
+    #container h2 {
+        font-size: 1.4em; /* Adjust container heading size */
+    }
+
+    #puzzleContainer h2 {
+        font-size: 1.3em; /* Adjust puzzle heading size */
+    }
+
+    #arrayContainer button {
+        width: 45%; /* Adjust button width for mobile */
+    }
+
+    .arrayBlock {
+        width: 40px; /* Adjust block size for mobile */
+        height: 40px; /* Adjust height for mobile */
+        font-size: 1em; /* Smaller font size for mobile */
+    }
 }
 
-#feedback-popup p {
-    font-size: 1.1rem;
-    margin-bottom: 15px;
-}
+@media (max-width: 480px) {
+    #popup {
+        width: 95%; /* Increase popup width for smaller devices */
+        padding: 10px; /* Less padding for smaller devices */
+    }
 
-#feedback-popup button {
-    padding: 8px 15px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #0e1a40;
-    background-color: #ffd700;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+    #popup h2 {
+        font-size: 1.1em; /* Further adjust heading size */
+    }
 
-#feedback-popup button:hover {
-    background-color: #ffc107;
+    #popup button {
+        padding: 6px 12px; /* Adjust button size */
+    }
+
+    #container h2 {
+        font-size: 1.2em; /* Further adjust container heading size */
+    }
+
+    #puzzleContainer h2 {
+        font-size: 1.2em; /* Further adjust puzzle heading size */
+    }
 }
