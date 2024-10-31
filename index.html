@@ -3,108 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logical Game</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Data Structures Game</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Optional external CSS -->
+    <script src="game.js" defer></script> <!-- Link to the game.js file -->
+    <style>
+ /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+    background-color: #0e1a40; /* Dark blue background */
+    color: #fff;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Splash Screen */
+#splash-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0e1a40;
+}
+
+#splash-screen img {
+    width: 120px; /* Adjust logo size as necessary */
+}
+
+/* Popup Styling */
+.popup {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1a274b; /* Darker blue for popup */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 90%;
+    max-width: 300px;
+}
+
+.popup.active {
+    display: block;
+}
+
+.popup h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.popup input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    background-color: #0e1a40;
+    color: #fff;
+    text-align: center;
+}
+
+.popup button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #0e1a40; /* Dark blue text */
+    background-color: #ffd700; /* Yellow background */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.popup button:hover {
+    background-color: #ffc107; /* Darker yellow on hover */
+}
+
+/* Screen Styling */
+.screen {
+    display: none;
+    text-align: center;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* Category Screen */
+#category-screen h2,
+#level-screen h2 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+/* Categories Styling */
+.categories {
+    display: flex; /* Use flexbox for horizontal alignment */
+    flex-wrap: wrap; /* Allow wrapping to next line if needed */
+    justify-content: center; /* Center the items */
+    gap: 20px; /* Space between containers */
+    padding: 20px; /* Padding around the container */
+    max-width: 1000px; /* Optional max width */
+}
+
+.category {
+    background-color: #ffd700; /* Yellow background */
+    padding: 20px;
+    border-radius: 8px;
+    width: 200px; /* Fixed width for consistent size */
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #0e1a40; /* Dark blue text */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.category:hover {
+    background-color: #ffc107; /* Darker yellow on hover */
+}
+
+/* Problem Screen */
+#problem-screen {
+    padding: 15px;
+}
+
+#problem-text {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+#problem-screen input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    background-color: #0e1a40; /* Dark blue input */
+    color: #fff;
+    text-align: center;
+}
+
+#problem-screen button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #0e1a40; /* Dark blue text */
+    background-color: #ffd700; /* Yellow background */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#problem-screen button:hover {
+    background-color: #ffc107; /* Darker yellow on hover */
+}
+
+/* Feedback Popup */
+#feedback-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1a274b; /* Darker blue for feedback */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 80%;
+    max-width: 250px;
+}
+
+#feedback-popup p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+#feedback-popup button {
+    padding: 8px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #0e1a40; /* Dark blue text */
+    background-color: #ffd700; /* Yellow background */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#feedback-popup button:hover {
+    background-color: #ffc107; /* Darker yellow on hover */
+}
+
+    </style>
 </head>
 <body>
 
-    <!-- Splash Screen -->
-    <div id="splash-screen">
-        <img src="logo (2).png" alt="Game Logo">
-    </div>
+<img id="logo" src="logo (2).png" alt="Logo">
 
-    <!-- Username Input Popup -->
-    <div id="username-popup" class="popup">
-        <h2>Enter Your Name</h2>
-        <input type="text" id="username" placeholder="Username - Your Name">
-        <button>Submit</button>
-    </div>
+<div id="popup">
+    <h2>Enter Your Name</h2>
+    <input type="text" id="nameInput" placeholder="Your Name" required>
+    <button onclick="submitName()">Submit</button>
+</div>
 
-    <!-- Category Selection -->
-    <div id="category-screen" class="screen">
-        <h2>Select a Category</h2>
-        <div class="categories">
-            <div class="category" onclick="openLevelScreen()">Array</div>
-            <div class="category" onclick="openLevelScreen()">LinkedList</div>
-            <div class="category coming-soon">Stack</div>
-            <div class="category coming-soon">Queue</div>
-            <div class="category coming-soon">Tree</div>
-            <div class="category coming-soon">Graph</div>
-        </div>
+<div id="nameContainer">
+    <div id="greeting"></div>
+</div>
+<!--<h2>Select a Data Structure to Play!</h2>-->
+<div id="container" style="display: none;">
+    <div class="data-structure" onclick="openGame('array.html')">
+        <img src="array-image-url.png" alt="Array">
     </div>
-
-    <!-- Level Selector -->
-    <div id="level-screen" class="screen">
-        <h2>Select a Level</h2>
-        <div class="levels">
-            <button onclick="startLevel(1)">1</button>
-            <button onclick="startLevel(2)">2</button>
-            <button onclick="startLevel(3)">3</button>
-            <button onclick="startLevel(4)">4</button>
-            <button onclick="startLevel(5)">5</button>
-            <button onclick="startLevel(6)">6</button>
-            <button onclick="startLevel(7)">7</button>
-            <button onclick="startLevel(8)">8</button>
-            <button onclick="startLevel(9)">9</button>
-            <button onclick="startLevel(10)">10</button>
-            <button onclick="startLevel(11)">11</button>
-            <button onclick="startLevel(12)">12</button>
-            <button onclick="startLevel(13)">13</button>
-            <button onclick="startLevel(14)">14</button>
-            <button onclick="startLevel(15)">15</button>
-            <button onclick="startLevel(16)">16</button>
-            <button onclick="startLevel(17)">17</button>
-            <button onclick="startLevel(18)">18</button>
-            <button onclick="startLevel(19)">19</button>
-            <button onclick="startLevel(20)">20</button>
-            <button onclick="startLevel(21)">21</button>
-            <button onclick="startLevel(22)">22</button>
-            <button onclick="startLevel(23)">23</button>
-            <button onclick="startLevel(24)">24</button>
-            <button onclick="startLevel(25)">25</button>
-            <button onclick="startLevel(26)">26</button>
-            <button onclick="startLevel(27)">27</button>
-            <button onclick="startLevel(28)">28</button>
-            <button onclick="startLevel(29)">29</button>
-            <button onclick="startLevel(30)">30</button>
-            <button onclick="startLevel(31)">31</button>
-            <button onclick="startLevel(32)">32</button>
-            <button onclick="startLevel(33)">33</button>
-            <button onclick="startLevel(34)">34</button>
-            <button onclick="startLevel(35)">35</button>
-            <button onclick="startLevel(36)">36</button>
-            <button onclick="startLevel(37)">37</button>
-            <button onclick="startLevel(38)">38</button>
-            <button onclick="startLevel(39)">39</button>
-            <button onclick="startLevel(40)">40</button>
-            <button onclick="startLevel(41)">41</button>
-            <button onclick="startLevel(42)">42</button>
-            <button onclick="startLevel(43)">43</button>
-            <button onclick="startLevel(44)">44</button>
-            <button onclick="startLevel(45)">45</button>
-            <button onclick="startLevel(46)">46</button>
-            <button onclick="startLevel(47)">47</button>
-            <button onclick="startLevel(48)">48</button>
-            <button onclick="startLevel(49)">49</button>
-            <button onclick="startLevel(50)">50</button>
-            <!-- Add more levels as needed -->
-        </div>
+    <div class="data-structure" onclick="openGame('linkedlist.html')">
+        <img src="linkedlist-image-url.png" alt="Linked List">
     </div>
-
-    <!-- Problem Screen -->
-    <div id="problem-screen" class="screen">
-        <h2>Level <span id="level-number"></span></h2>
-        <p id="problem-text">Arrange the ARRAY</p>
-        <input type="text" id="answer" placeholder="Your answer here">
-        <button onclick="checkAnswer()">Submit</button>
+    <div class="data-structure" onclick="openGame('tree.html')">
+        <img src="tree-image-url.png" alt="Tree">
     </div>
-
-    <!-- Feedback Popup -->
-    <div id="feedback-popup" class="popup">
-        <p id="feedback-message">Congrats!</p>
-        <button onclick="nextLevel()">Next Level</button>
+    <div class="data-structure" onclick="openGame('graph.html')">
+        <img src="graph-image-url.png" alt="Graph">
     </div>
+    <div class="data-structure" onclick="openGame('stack.html')">
+        <img src="stack-image-url.png" alt="Stack">
+    </div>
+    <div class="data-structure" onclick="openGame('queue.html')">
+        <img src="queue-image-url.png" alt="Queue">
+    </div>
+</div>
 
-    <script src="script.js"></script>
+<script>
+    // game.js
+
+    // Function to show logo and then popup after 3 seconds
+    window.onload = function() {
+        document.getElementById('logo').style.display = 'block'; // Show the logo initially
+        setTimeout(() => {
+            document.getElementById('popup').style.display = 'block'; // Show the popup after 3 seconds
+        }, 3000);
+    };
+
+    // Function to handle name submission
+    function submitName() {
+        const name = document.getElementById('nameInput').value;
+        if (name) {
+            document.getElementById('greeting').innerText = 'Hi, ' + name + '!';
+            document.getElementById('popup').style.display = 'none'; // Hide the popup
+            document.getElementById('container').style.display = 'block'; // Show container with images
+            document.querySelector('h2').style.display = 'block'; // Show the heading for data structures
+        }
+    }
+
+    // Function to open the game corresponding to the selected data structure
+    function openGame(gamePage) {
+        window.location.href = gamePage; // Redirect to the game page
+    }
+</script>
+
 </body>
 </html>
