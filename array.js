@@ -2,7 +2,7 @@ let levels = [
     {
         question: "Given the array: [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]. Rearrange it such that even numbers come before odd numbers, Even numbers sorted in ascending order and Odd numbers sorted in descending order.",
         array: [3, 1, 4, 1, 5, 9, 2, 6, 5, 3],
-        correctAnswer: [2, 4, 6,9, 5, 5, 3, 3, 1, 1]
+        correctAnswer: [2, 4, 6, 9, 5, 5, 3, 3, 1, 1]
     },
     {
         question: "Given the array: [10, 3, 5, 7, 2]. Rearrange it such that it is in descending order.",
@@ -17,6 +17,7 @@ let levels = [
 ];
 
 let currentLevel = 0;
+let draggedIndex = null;
 
 function startGame() {
     currentLevel = 0;
@@ -40,9 +41,17 @@ function updateArrayDisplay(array) {
         block.className = 'arrayBlock';
         block.innerHTML = value;
         block.setAttribute('draggable', 'true');
+
+        // Add drag-and-drop event listeners for desktop
         block.ondragstart = (event) => dragStart(event, index);
         block.ondragover = dragOver;
         block.ondrop = (event) => drop(event, index);
+
+        // Add touch event listeners for mobile
+        block.addEventListener('touchstart', (event) => touchStart(event, index));
+        block.addEventListener('touchmove', touchMove);
+        block.addEventListener('touchend', touchEnd);
+
         container.appendChild(block);
     });
 }
@@ -50,6 +59,7 @@ function updateArrayDisplay(array) {
 function dragStart(event, index) {
     event.dataTransfer.setData('text/plain', index);
     event.target.style.opacity = '0.5';
+    draggedIndex = index; // Set draggedIndex
 }
 
 function dragOver(event) {
@@ -68,6 +78,32 @@ function drop(event, targetIndex) {
     }
 
     event.target.style.opacity = '1';
+}
+
+function touchStart(event, index) {
+    draggedIndex = index; // Set draggedIndex
+    const block = event.target;
+    block.style.opacity = '0.5';
+}
+
+function touchMove(event) {
+    const touch = event.touches[0];
+    const block = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (block && block.classList.contains('arrayBlock') && block !== event.target) {
+        const targetIndex = Array.from(document.getElementById('arrayContainer').children).indexOf(block);
+        if (draggedIndex !== targetIndex) {
+            // Swap the elements
+            const draggedItem = levels[currentLevel].array.splice(draggedIndex, 1)[0];
+            levels[currentLevel].array.splice(targetIndex, 0, draggedItem);
+            updateArrayDisplay(levels[currentLevel].array); // Refresh display
+            draggedIndex = targetIndex; // Update draggedIndex
+        }
+    }
+}
+
+function touchEnd(event) {
+    const block = event.target;
+    block.style.opacity = '1';
 }
 
 function checkPuzzleAnswer() {
