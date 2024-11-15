@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Structures Game</title>
     <link rel="stylesheet" href="style.css"> <!-- Link to the external CSS file -->
-    <script src="array.js" defer></script> <!-- Link to the game.js file -->
+    <script src="script.js" defer></script> <!-- Link to the game.js file -->
 </head>
-<body>
+<body style="background-color: black;">
 
 <img id="logo" src="logo.png" alt="Logo">
 
@@ -22,22 +22,57 @@
 </div>
 
 <div id="container" style="display: none;">
-    <h2>Select a Data Structure to Play!</h2>
+    <!-- <h2>Select a Data Structure to Play!</h2> -->
 
     <!-- Array Button -->
     <div id="arrayContainer">
-        <button onclick="startGame()"> 
-            <img src="array.png" alt="array">
+      <button id="arrayButton" onclick="arraystartGame()">Start Array Game
         </button>
     </div>
 
-    <div id="result"></div>
-    <div id="puzzleContainer" style="display: none;">
-        <h2>Puzzle Question</h2>
-        <p id="puzzleQuestion"></p>
-        <button onclick="checkPuzzleAnswer()">Submit Answer</button>
-        <div id="puzzleResult"></div>
+    <!-- linkedlist button -->
+    <div id="linkedlistContainer">
+        <button id="linkedListButton" onclick="linkedliststartGame()">Start Linked List Game</button>
     </div>
+    <!-- stack -->
+    <div id="intro-screen">
+    <button id="startGameButton" onclick="stackstartgame()" >Start Game</button>
+  </div>
+
+    <div id="array">
+        <div id="result"></div>
+        <div id="puzzleContainer" style="display: none;">
+            <h2>Puzzle Question</h2>
+            <p id="puzzleQuestion"></p>
+            <button onclick="checkPuzzleAnswer()">Submit Answer</button>
+            <div id="puzzleResult"></div>
+        </div>
+    </div>
+
+    <div id="linkedlist" style="display: none;">
+        <div id="linked-list"></div>
+            <p id="timer">Time: 0s</p>
+            <p id="level">Level: 1</p>
+            <p id="message"></p>
+        <div id="question-options">
+            <div id="question"></div>
+            <div id="options"></div>
+        </div>
+        <button id="next-button" onclick="loadNextLevel()" style="display: none;">Next Question</button>
+    </div>
+
+    <div id="game-container" class="hidden" style="display: none;">
+        <h1>Memory Stack Puzzle Game</h1>
+        <div id="stack-container">
+          <div id="stack"></div>
+        </div>
+        <input type="number" id="player-input" placeholder="Enter number" min="0" max="100" disabled>
+        <button id="pop-button" disabled>Submit</button>
+        <p id="message"></p>
+        <p id="score">Score: 0</p>
+      </div>
+    
+
 </div>
 
 <script>
