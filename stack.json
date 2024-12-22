@@ -1,0 +1,24 @@
+{
+    "levels": {
+      "1": {
+        "sequence": [10, 20, 30, 40],
+        "message": "Memorize the sequence!"
+      },
+      "2": {
+        "sequence": [5, 15, 25, 35],
+        "message": "Level 2: Memorize the sequence!"
+      },
+      "3": {
+        "sequence": [1, 2, 3, 4],
+        "message": "Level 3: Memorize the sequence!"
+      }
+    },
+    "messages": {
+      "startSequence": "Memorize the sequence!",
+      "incorrectGuess": "Incorrect! Game Over. Expected {expectedNum}. Restarting from incorrect guess...",
+      "correctGuess": "Correct!",
+      "levelComplete": "Level {level} complete! Moving to next level...",
+      "gameOver": "No more levels. You completed the game!"
+    }
+  }
+  

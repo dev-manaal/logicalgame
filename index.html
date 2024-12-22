@@ -1,95 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Structures Game</title>
-    <link rel="stylesheet" href="style.css"> <!-- Link to the external CSS file -->
-    <script src="script.js" defer></script> <!-- Link to the game.js file -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logical Game</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+   
+    #splash-screen {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      /* background-color: #008080; */
+    }
+
+    #credentials-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      /* background-color: #f0f8f8; */
+    }
+
+    #credentials-form {
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 400px;
+        /* animation: fadeIn 1s ease-out;
+        transition: transform 0.3s ease;
+        transform: translateY(30px); Start position for animation */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #credentials-form label {
+        font-size: 18px;
+        margin-bottom: 10px;
+        display: block;
+        color: #333;
+    }
+    #credentials-form input {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #175736;
+        border-radius: 15px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        background-color: #f9f9f9;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    #credentials-form input:focus {
+  border-color: #0B2F20;
+  box-shadow: 0 0 8px #175736;
+  outline: none;
+}
+#credentials-form button {
+  width: 100%;
+  padding: 14px;
+  background-color: #175736;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+#credentials-form button:hover {
+  background-color: #0B2F20;
+  transform: translateY(-2px);
+}
+
+#credentials-form button:active {
+  transform: translateY(2px);
+}
+  
+    .locked {
+      filter: grayscale(100%);
+      pointer-events: none;
+    }
+  </style>
 </head>
-<body style="background-color: black;">
-
-<img id="logo" src="logo.png" alt="Logo">
-
-<div id="popup">
-    <h2>Enter Your Name</h2>
-    <input type="text" id="nameInput" placeholder="Your Name" required>
-    <button onclick="submitName()">Submit</button>
-</div>
-
-<div id="nameContainer">
-    <div id="greeting"></div>
-</div>
-
-<div id="container" style="display: none;">
-    <!-- <h2>Select a Data Structure to Play!</h2> -->
-
-    <!-- Array Button -->
-    <div id="arrayContainer">
-      <button id="arrayButton" onclick="arraystartGame()">Start Array Game
-        </button>
-    </div>
-
-    <!-- linkedlist button -->
-    <div id="linkedlistContainer">
-        <button id="linkedListButton" onclick="linkedliststartGame()">Start Linked List Game</button>
-    </div>
-    <!-- stack -->
-    <div id="intro-screen">
-    <button id="startGameButton" onclick="stackstartgame()" >Start Game</button>
+<body>
+  <!-- Splash Screen -->
+  <div id="splash-screen">
+    <img src="logo.png" alt="Brand Logo">
   </div>
 
-    <div id="array">
-        <div id="result"></div>
-        <div id="puzzleContainer" style="display: none;">
-            <h2>Puzzle Question</h2>
-            <p id="puzzleQuestion"></p>
-            <button onclick="checkPuzzleAnswer()">Submit Answer</button>
-            <div id="puzzleResult"></div>
-        </div>
-    </div>
-
-    <div id="linkedlist" style="display: none;">
-        <div id="linked-list"></div>
-            <p id="timer">Time: 0s</p>
-            <p id="level">Level: 1</p>
-            <p id="message"></p>
-        <div id="question-options">
-            <div id="question"></div>
-            <div id="options"></div>
-        </div>
-        <button id="next-button" onclick="loadNextLevel()" style="display: none;">Next Question</button>
-    </div>
-
-    <div id="game-container" class="hidden" style="display: none;">
-        <h1>Memory Stack Puzzle Game</h1>
-        <div id="stack-container">
-          <div id="stack"></div>
-        </div>
-        <input type="number" id="player-input" placeholder="Enter number" min="0" max="100" disabled>
-        <button id="pop-button" disabled>Submit</button>
-        <p id="message"></p>
-        <p id="score">Score: 0</p>
+  <!-- Credentials Page -->
+  <div id="credentials-page" style="display: none;">
+    <nav>
+      <div class="brand">
+        <img src="logo.png" alt="Brand Logo">
       </div>
-    
+    </nav>
+    <form id="credentials-form">
+      <label for="username">Enter Your Name:</label>
+      <input type="text" id="username" required>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 
-</div>
+  <!-- Game Types Page -->
+  <div id="game-types" class="hidden" style="display: none;">
+    <nav>
+      <div class="brand">
+        <img src="logo.png" alt="Brand Logo">
+      </div>
+      <div class="user-greeting">Hi, <span id="user-greeting"></span>!</div>
+    </nav>
 
-<script>
-function submitName() {
-    const nameInput = document.getElementById('nameInput');
-    const name = nameInput.value.trim();
+    <div class="game-grid">
+      <div id="arrayGameCard" class="game-card" onclick="arraystartGame()">
+        <h3>ARRAY</h3>
+        <!-- <img src="array1.png" alt="Array Game"> -->
+      </div>
+      <div id="linkedListGameCard" class="game-card" onclick="linkedliststartGame()">
+        <h3>Linked List</h3>
+        <!-- <img src="linkedlist.png" alt="Linked List Game"> -->
+      </div>
+      <div id="stackGameCard" class="game-card" onclick="startStackGame()">
+        <h3>Stack</h3>
+        <!-- <img src="stack3.png" alt="Stack Game"> -->
+      </div>
+      <div id="queueGameCard" class="game-card" onclick="startqueuegame()">
+        <h3>Queue</h3>
+        <!-- <img src="queue.png" alt="Queue Game"> -->
+      </div>
+      <div id="treeGameCard" class="game-card" onclick="starttreeGame()">
+        <h3>Tree</h3>
+        <!-- <img src="tree1.png" alt="Tree Game"> -->
+      </div>
+      <div id="puzzelGameCard" class="game-card" onclick="startpuzzelGame()">
+        <h3>Puzzel</h3>
+        <!-- <img src="graph-game.png" alt="Graph Game"> -->
+      </div>
+      <div id="comingSoonCard" class="game-card locked" onclick="startmindGame()">        <!-- <img src="mind-game.png" alt="Coming Soon"> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Sections -->
+  <div id="arrayGame" class="game-section" style="display: none;">
     
-    if (name) {
-        document.getElementById('greeting').innerText = 'Hi, ' + name + '!';
-        document.getElementById('popup').style.display = 'none'; // Hide the popup
-        document.getElementById('container').style.display = 'block'; // Show container with images
-        document.querySelector('h2').style.display = 'block'; // Show the heading for data structures
-    } else {
-        alert("Please enter a name before submitting."); // Alert if no name is entered
-    }
-}
-</script>
+    <button id="backToGameTypesBtnArray">
+      <img src="back.png" alt="backbutton">
+    </button>
+    <div id="result"></div>
+    <div id="puzzleContainer">
+      <div id="arrgame">
+      <h2>Puzzle Question</h2>
+      <p id="puzzleQuestion"></p>
+      <div id="arrayContainer"></div>
+      <button id="checkPuzzleAnswer">Submit Answer</button>
+      <div id="puzzleResult"></div>
+    </div>
+  </div>
+    <!-- <button id="backToGameTypesBtn">Back to Game Types</button> -->
+  </div>
+
+  <div id="linkedListGame" class="game-section" style="display: none;">
+    <button id="backToGameTypesBtnLinkedList">
+      <img src="back.png" alt="backbutton">
+    </button>
+    <div id="linkedListContainer"></div>
+    <div id="linkedlist" >
+      <div id="linkedgame">
+      <!-- <div id="linked-list"></div> -->
+          <p id="timer">Time: 0s</p>
+          <p id="level">Level: 1</p>
+          <p id="message" style="color:#333 ;"></p>
+          <div id="linked-list"></div>
+      <div id="question-options">
+          <div id="question"></div>
+          <div id="options"></div>
+      </div>
+      <button id="next-button" onclick="loadNextLevel()" >Next Question</button>
+    </div>
+  </div><!-- <button id="backToGameTypesBtn">Back to Game Types</button> -->
+  </div>
+
+  <div id="stackGame" class="game-section" style="display: none;">
+    
+    <button id="backToGameTypesBtnStack">    
+        <img src="back.png" alt="backbutton">
+    </button>
+    <!-- <div id="stackContainer"></div> -->
+    <div id="game-container" class="hidden">
+      <p id="current-level">Level: 1</p> 
+     <div id="stack-container">
+        <div id="stack"></div>
+      </div>
+      <!-- <p id="current-level">Level: 1</p>  -->
+      <input type="number" id="player-input" placeholder="Enter number" min="0" max="100" disabled>
+      <button id="pop-button" disabled>POP</button>
+      <p id="message"></p>
+      <p id="score">Score: 0</p>
+    </div>
+    <!-- <button id="backToGameTypesBtn">Back to Game Types</button> -->
+  </div>
+
+  <div id="queueGame" class="game-section" style="display: none;">
+      <button id="backToGameTypesBtnQueue">  
+        <img src="back.png" alt="backbutton">
+      </button>
+      <div id="queueContainer">
+      <h2 id="original-numbers-heading" class="original-numbers-heading"></h2>
+      <div id="level-score-container">
+        <p>Level: <span id="qlevel">1</span></p>
+        <p>Score: <span id="qscore">0</span></p>
+      </div>
+      <div id="cards-container" class="cards-container"></div>
+      <div id="input-container" class="input-container"></div>
+      <div id="feedback" class="feedback"></div>
+      <button id="submit-button" class="submit-button">Submit Guess</button>
+    </div>
+  </div>
+  <div id="treeGame" class="game-section" style="display: none;">
+    <button id="backToGameTypesBtnTree">
+      <img src="back.png" alt="backbutton">
+    </button>
+    <div id="trgame" class="container">
+      <p id="levelIndicator">Level: 1</p>
+      <h2 id="levelHeading"></h2>  <!-- This is where the heading will be displayed -->
+
+      <div id="treeContainer">
+      </div>
+      <div id="nodeContainer">
+      </div>
+      <button id="checkBtn">Check Answer</button>
+      <p id="mess"></p>
+    </div>
+  </div>
+  <div id="slidingGame" class="game-section" style="display: none;">
+    <button id="backToGameTypesBtnsliding">
+      <img src="back.png" alt="backbutton">
+    </button>
+    <div id="sligame">
+    <div class="game-header">
+      <h1>Sliding Puzzle</h1>
+      <p>Level: <span id="level">1</span></p>
+    </div>
+    <div class="puzzle-container" id="slidingpuzzelcontainer"></div>
+    <div class="popup" id="winPopup">
+      <div class="popup-content">
+        <h2>Congratulations!</h2>
+        <p>You solved the puzzle!</p>
+        <button id="nextLevelButton">Next Level</button>
+      </div>
+    </div>
+  </div>
+  </div>
+<script src="script.js"></script>
+
+
 
 </body>
 </html>

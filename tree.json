@@ -1,0 +1,682 @@
+{
+    "levels": [
+      {
+        "heading": "Arrange the following nodes to form a valid Binary Search Tree.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 50, "x": 300, "y": 30 },
+          { "value": 30, "x": 200, "y": 100 },
+          { "value": 70, "x": 400, "y": 100 },
+          { "value": 20, "x": 150, "y": 170 },
+          { "value": 40, "x": 250, "y": 170 },
+          { "value": 60, "x": 350, "y": 170 },
+          { "value": 80, "x": 450, "y": 170 }
+        ],
+        "nodes": [50, 30, 70, 20, 40, 60, 80]
+      },      
+      {
+        "heading": "Insert the nodes into a Binary Search Tree and ensure it remains balanced.",
+        "difficulty": "hard",
+        "targets": [
+          { "value": 25, "x": 300, "y": 30 },
+          { "value": 15, "x": 200, "y": 100 },
+          { "value": 35, "x": 400, "y": 100 },
+          { "value": 10, "x": 150, "y": 170 },
+          { "value": 20, "x": 250, "y": 170 },
+          { "value": 30, "x": 350, "y": 170 },
+          { "value": 40, "x": 450, "y": 170 }
+        ],
+        "nodes": [25, 15, 35, 10, 20, 30, 40]
+      },
+      {
+        "heading": "Construct a Binary Search Tree where the root has a value of 60.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 60, "x": 300, "y": 30 },
+          { "value": 40, "x": 200, "y": 100 },
+          { "value": 80, "x": 400, "y": 100 },
+          { "value": 30, "x": 150, "y": 170 },
+          { "value": 50, "x": 250, "y": 170 },
+          { "value": 70, "x": 350, "y": 170 },
+          { "value": 90, "x": 450, "y": 170 }
+        ],
+        "nodes": [60, 40, 80, 30, 50, 70, 90]
+      },      
+      {
+        "heading": "Place these nodes in a Binary Search Tree following the in-order traversal order.",
+        "difficulty": "easy",
+        "targets": [
+          { "value": 10, "x": 300, "y": 30 },
+          { "value": 5, "x": 200, "y": 100 },
+          { "value": 15, "x": 400, "y": 100 },
+          { "value": 3, "x": 150, "y": 170 },
+          { "value": 7, "x": 250, "y": 170 }
+        ],
+        "nodes": [10, 5, 15, 3, 7]
+      },
+      {
+        "heading": "Rearrange the nodes to form a valid Binary Search Tree with a height of 3.",
+        "difficulty": "hard",
+        "targets": [
+          { "value": 45, "x": 300, "y": 30 },
+          { "value": 25, "x": 200, "y": 100 },
+          { "value": 65, "x": 400, "y": 100 },
+          { "value": 15, "x": 150, "y": 170 },
+          { "value": 35, "x": 250, "y": 170 },
+          { "value": 55, "x": 350, "y": 170 },
+          { "value": 75, "x": 450, "y": 170 }
+        ],
+        "nodes": [45, 25, 65, 15, 35, 55, 75]
+      },
+      {
+        "heading": "Rearrange the nodes to form a Full Binary Tree.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 10, "x": 300, "y": 30 },
+          { "value": 5, "x": 200, "y": 100 },
+          { "value": 15, "x": 400, "y": 100 },
+          { "value": 2, "x": 150, "y": 170 },
+          { "value": 8, "x": 250, "y": 170 },
+          { "value": 12, "x": 350, "y": 170 },
+          { "value": 18, "x": 450, "y": 170 }
+        ],
+        "nodes": [10, 5, 15, 2, 8, 12, 18]
+      },
+      {
+        "heading": "Form a Full Binary Tree with nodes placed at each level.",
+        "difficulty": "easy",
+        "targets": [
+          { "value": 1, "x": 300, "y": 30 },
+          { "value": 2, "x": 200, "y": 100 },
+          { "value": 3, "x": 400, "y": 100 }
+        ],
+        "nodes": [1, 2, 3]
+      },
+      {
+        "heading": "Ensure each node has exactly 2 children (or none) to form a Full Binary Tree.",
+        "difficulty": "hard",
+        "targets": [
+          { "value": 25, "x": 300, "y": 30 },
+          { "value": 10, "x": 200, "y": 100 },
+          { "value": 40, "x": 400, "y": 100 },
+          { "value": 5, "x": 150, "y": 170 },
+          { "value": 20, "x": 250, "y": 170 },
+          { "value": 35, "x": 350, "y": 170 },
+          { "value": 50, "x": 450, "y": 170 }
+        ],
+        "nodes": [25, 10, 40, 5, 20, 35, 50]
+      },
+      {
+        "heading": "Construct a Full Binary Tree with these nodes.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 7, "x": 300, "y": 30 },
+          { "value": 3, "x": 200, "y": 100 },
+          { "value": 9, "x": 400, "y": 100 },
+          { "value": 1, "x": 150, "y": 170 },
+          { "value": 5, "x": 250, "y": 170 },
+          { "value": 8, "x": 350, "y": 170 },
+          { "value": 10, "x": 450, "y": 170 }
+        ],
+        "nodes": [7, 3, 9, 1, 5, 8, 10]
+      },
+      {
+        "heading": "Organize these nodes into a Full Binary Tree with depth 3.",
+        "difficulty": "easy",
+        "targets": [
+          { "value": 11, "x": 300, "y": 30 },
+          { "value": 6, "x": 200, "y": 100 },
+          { "value": 15, "x": 400, "y": 100 },
+          { "value": 3, "x": 150, "y": 170 },
+          { "value": 8, "x": 250, "y": 170 }
+        ],
+        "nodes": [11, 6, 15, 3, 8]
+      },      
+      {
+        "heading": "Rearrange the nodes to form a Complete Binary Tree.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 10, "x": 300, "y": 30 },
+          { "value": 20, "x": 200, "y": 100 },
+          { "value": 30, "x": 400, "y": 100 },
+          { "value": 40, "x": 150, "y": 170 },
+          { "value": 50, "x": 250, "y": 170 },
+          { "value": 60, "x": 350, "y": 170 }
+        ],
+        "nodes": [10, 20, 30, 40, 50, 60]
+      },
+      {
+        "heading": "Place the nodes level-by-level to form a Complete Binary Tree.",
+        "difficulty": "easy",
+        "targets": [
+          { "value": 5, "x": 300, "y": 30 },
+          { "value": 9, "x": 200, "y": 100 },
+          { "value": 12, "x": 400, "y": 100 },
+          { "value": 15, "x": 250, "y": 170 }
+        ],
+        "nodes": [5, 9, 12, 15]
+      },          
+      {
+        "heading": "Complete the given tree structure to make it a Complete Binary Tree.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 8, "x": 300, "y": 30 },
+          { "value": 4, "x": 200, "y": 100 },
+          { "value": 12, "x": 400, "y": 100 },
+          { "value": 2, "x": 150, "y": 170 },
+          { "value": 6, "x": 250, "y": 170 },
+          { "value": 10, "x": 350, "y": 170 },
+          { "value": 14, "x": 450, "y": 170 }
+        ],
+        "nodes": [8, 4, 12, 2, 6, 10, 14]
+      },
+      {
+        "heading": "Fill the missing nodes to complete the binary tree.",
+        "difficulty": "hard",
+        "targets": [
+          { "value": 100, "x": 300, "y": 30 },
+          { "value": 50, "x": 200, "y": 100 },
+          { "value": 150, "x": 400, "y": 100 },
+          { "value": 25, "x": 150, "y": 170 },
+          { "value": 75, "x": 250, "y": 170 },
+          { "value": 125, "x": 350, "y": 170 }
+        ],
+        "nodes": [100, 50, 150, 25, 75, 125]
+      },
+      {
+        "heading": "Rearrange the nodes into the shape of a Complete Binary Tree.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 1, "x": 300, "y": 30 },
+          { "value": 2, "x": 200, "y": 100 },
+          { "value": 3, "x": 400, "y": 100 },
+          { "value": 4, "x": 150, "y": 170 },
+          { "value": 5, "x": 250, "y": 170 },
+          { "value": 6, "x": 350, "y": 170 },
+          { "value": 7, "x": 450, "y": 170 }
+        ],
+        "nodes": [1, 2, 3, 4, 5, 6, 7]
+      },
+      {
+        "heading": "Rearrange the nodes to form a Perfect Binary Tree.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 16, "x": 300, "y": 30 },
+          { "value": 8, "x": 200, "y": 100 },
+          { "value": 24, "x": 400, "y": 100 },
+          { "value": 4, "x": 150, "y": 170 },
+          { "value": 12, "x": 250, "y": 170 },
+          { "value": 20, "x": 350, "y": 170 },
+          { "value": 28, "x": 450, "y": 170 }
+        ],
+        "nodes": [16, 8, 24, 4, 12, 20, 28]
+      },
+      {
+        "heading": "Construct a Perfect Binary Tree from these nodes.",
+        "difficulty": "easy",
+        "targets": [
+          { "value": 5, "x": 300, "y": 30 },
+          { "value": 3, "x": 200, "y": 100 },
+          { "value": 7, "x": 400, "y": 100 }
+        ],
+        "nodes": [5, 3, 7]
+      },
+      {
+        "heading": "Ensure the binary tree is both full and balanced to make it Perfect.",
+        "difficulty": "hard",
+        "targets": [
+          { "value": 10, "x": 300, "y": 30 },
+          { "value": 6, "x": 200, "y": 100 },
+          { "value": 14, "x": 400, "y": 100 },
+          { "value": 4, "x": 150, "y": 170 },
+          { "value": 8, "x": 250, "y": 170 },
+          { "value": 12, "x": 350, "y": 170 },
+          { "value": 16, "x": 450, "y": 170 }
+        ],
+        "nodes": [10, 6, 14, 4, 8, 12, 16]
+      },
+      {
+        "heading": "Build a Perfect Binary Tree with three levels.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 50, "x": 300, "y": 30 },
+          { "value": 30, "x": 200, "y": 100 },
+          { "value": 70, "x": 400, "y": 100 },
+          { "value": 20, "x": 150, "y": 170 },
+          { "value": 40, "x": 250, "y": 170 },
+          { "value": 60, "x": 350, "y": 170 },
+          { "value": 80, "x": 450, "y": 170 }
+        ],
+        "nodes": [50, 30, 70, 20, 40, 60, 80]
+      },     
+      {
+        "heading": "Organize nodes into a Perfect Binary Tree with the given structure.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 15, "x": 300, "y": 30 },
+          { "value": 10, "x": 200, "y": 100 },
+          { "value": 20, "x": 400, "y": 100 },
+          { "value": 8, "x": 150, "y": 170 },
+          { "value": 12, "x": 250, "y": 170 },
+          { "value": 18, "x": 350, "y": 170 },
+          { "value": 25, "x": 450, "y": 170 }
+        ],
+        "nodes": [15, 10, 20, 8, 12, 18, 25]
+      },
+      {
+        "heading": "Rearrange nodes to balance the binary tree.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 6, "x": 300, "y": 30 },
+          { "value": 4, "x": 200, "y": 100 },
+          { "value": 8, "x": 400, "y": 100 },
+          { "value": 2, "x": 150, "y": 170 },
+          { "value": 5, "x": 250, "y": 170 },
+          { "value": 7, "x": 350, "y": 170 },
+          { "value": 9, "x": 450, "y": 170 }
+        ],
+        "nodes": [6, 4, 8, 2, 5, 7, 9]
+      },
+      {
+        "heading": "Balance the binary tree to minimize its height.",
+        "difficulty": "hard",
+        "targets": [
+          { "value": 50, "x": 300, "y": 30 },
+          { "value": 25, "x": 200, "y": 100 },
+          { "value": 75, "x": 400, "y": 100 },
+          { "value": 15, "x": 150, "y": 170 },
+          { "value": 35, "x": 250, "y": 170 },
+          { "value": 60, "x": 350, "y": 170 },
+          { "value": 90, "x": 450, "y": 170 }
+        ],
+        "nodes": [50, 25, 75, 15, 35, 60, 90]
+      },
+      {
+        "heading": "Construct a Balanced Binary Tree from the given nodes.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 30, "x": 300, "y": 30 },
+          { "value": 20, "x": 200, "y": 100 },
+          { "value": 40, "x": 400, "y": 100 },
+          { "value": 10, "x": 150, "y": 170 },
+          { "value": 25, "x": 250, "y": 170 },
+          { "value": 35, "x": 350, "y": 170 },
+          { "value": 45, "x": 450, "y": 170 }
+        ],
+        "nodes": [30, 20, 40, 10, 25, 35, 45]
+      },
+      {
+        "heading": "Balance the tree by properly placing the nodes.",
+        "difficulty": "easy",
+        "targets": [
+          { "value": 15, "x": 300, "y": 30 },
+          { "value": 10, "x": 200, "y": 100 },
+          { "value": 20, "x": 400, "y": 100 }
+        ],
+        "nodes": [15, 10, 20]
+      },
+      {
+        "heading": "Ensure the binary tree is height-balanced.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 70, "x": 300, "y": 30 },
+          { "value": 50, "x": 200, "y": 100 },
+          { "value": 90, "x": 400, "y": 100 },
+          { "value": 30, "x": 150, "y": 170 },
+          { "value": 60, "x": 250, "y": 170 },
+          { "value": 80, "x": 350, "y": 170 },
+          { "value": 100, "x": 450, "y": 170 }
+        ],
+        "nodes": [70, 50, 90, 30, 60, 80, 100]
+      },
+      {
+        "heading": "Arrange nodes to form a Degenerate Tree (linked list).",
+        "difficulty": "easy",
+        "targets": [
+          { "value": 10, "x": 300, "y": 30 },
+          { "value": 20, "x": 300, "y": 100 },
+          { "value": 30, "x": 300, "y": 170 },
+          { "value": 40, "x": 300, "y": 240 }
+        ],
+        "nodes": [10, 20, 30, 40]
+      },
+      {
+        "heading": "Build a Degenerate Tree by aligning all nodes on one side.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 5, "x": 300, "y": 30 },
+          { "value": 10, "x": 300, "y": 100 },
+          { "value": 15, "x": 300, "y": 170 },
+          { "value": 20, "x": 300, "y": 240 },
+          { "value": 25, "x": 300, "y": 310 }
+        ],
+        "nodes": [5, 10, 15, 20, 25]
+      },
+      {
+        "heading": "Ensure all nodes form a right-skewed Degenerate Tree.",
+        "difficulty": "hard",
+        "targets": [
+          { "value": 50, "x": 300, "y": 30 },
+          { "value": 60, "x": 300, "y": 100 },
+          { "value": 70, "x": 300, "y": 170 },
+          { "value": 80, "x": 300, "y": 240 },
+          { "value": 90, "x": 300, "y": 310 }
+        ],
+        "nodes": [50, 60, 70, 80, 90]
+      },
+      {
+        "heading": "Create a left-skewed Degenerate Tree from the nodes.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 40, "x": 300, "y": 30 },
+          { "value": 30, "x": 300, "y": 100 },
+          { "value": 20, "x": 300, "y": 170 },
+          { "value": 10, "x": 300, "y": 240 }
+        ],
+        "nodes": [40, 30, 20, 10]
+      },
+      {
+        "heading": "Align the nodes into a straight line to form a Degenerate Tree.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 1, "x": 300, "y": 30 },
+          { "value": 2, "x": 300, "y": 100 },
+          { "value": 3, "x": 300, "y": 170 },
+          { "value": 4, "x": 300, "y": 240 },
+          { "value": 5, "x": 300, "y": 310 }
+        ],
+        "nodes": [1, 2, 3, 4, 5]
+      },
+      {
+        "heading": "Balance the binary tree to satisfy AVL properties.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 30, "x": 300, "y": 30 },
+          { "value": 20, "x": 200, "y": 100 },
+          { "value": 40, "x": 400, "y": 100 },
+          { "value": 10, "x": 150, "y": 170 },
+          { "value": 25, "x": 250, "y": 170 },
+          { "value": 35, "x": 350, "y": 170 },
+          { "value": 50, "x": 450, "y": 170 }
+        ],
+        "nodes": [30, 20, 40, 10, 25, 35, 50]
+      },
+      {
+        "heading": "Insert nodes to maintain AVL balance.",
+        "difficulty": "easy",
+        "targets": [
+          { "value": 20, "x": 300, "y": 30 },
+          { "value": 10, "x": 200, "y": 100 },
+          { "value": 30, "x": 400, "y": 100 }
+        ],
+        "nodes": [20, 10, 30]
+      },
+      {
+        "heading": "Perform rotations to balance the AVL Tree.",
+        "difficulty": "hard",
+        "targets": [
+          { "value": 40, "x": 300, "y": 30 },
+          { "value": 30, "x": 200, "y": 100 },
+          { "value": 50, "x": 400, "y": 100 },
+          { "value": 20, "x": 150, "y": 170 },
+          { "value": 35, "x": 250, "y": 170 },
+          { "value": 45, "x": 350, "y": 170 },
+          { "value": 60, "x": 450, "y": 170 }
+        ],
+        "nodes": [40, 30, 50, 20, 35, 45, 60]
+      },
+      {
+        "heading": "Adjust the AVL Tree to maintain balance after insertion.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 25, "x": 300, "y": 30 },
+          { "value": 20, "x": 200, "y": 100 },
+          { "value": 30, "x": 400, "y": 100 },
+          { "value": 15, "x": 150, "y": 170 },
+          { "value": 22, "x": 250, "y": 170 },
+          { "value": 28, "x": 350, "y": 170 },
+          { "value": 35, "x": 450, "y": 170 }
+        ],
+        "nodes": [25, 20, 30, 15, 22, 28, 35]
+      },      
+      {
+        "heading": "Ensure the AVL Tree satisfies height-balancing rules.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 10, "x": 300, "y": 30 },
+          { "value": 5, "x": 200, "y": 100 },
+          { "value": 15, "x": 400, "y": 100 },
+          { "value": 2, "x": 150, "y": 170 },
+          { "value": 7, "x": 250, "y": 170 },
+          { "value": 12, "x": 350, "y": 170 },
+          { "value": 18, "x": 450, "y": 170 }
+        ],
+        "nodes": [10, 5, 15, 2, 7, 12, 18]
+      },
+      {
+        "heading": "Construct a Red-Black Tree ensuring balance and color properties.",
+        "difficulty": "easy",
+        "targets": [
+          { "value": 10, "x": 300, "y": 30 },
+          { "value": 5, "x": 200, "y": 100 },
+          { "value": 15, "x": 400, "y": 100 }
+        ],
+        "nodes": [10, 5, 15]
+      },
+      {
+        "heading": "Balance the Red-Black Tree after inserting nodes.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 20, "x": 300, "y": 30 },
+          { "value": 10, "x": 200, "y": 100 },
+          { "value": 30, "x": 400, "y": 100 },
+          { "value": 5, "x": 150, "y": 170 },
+          { "value": 15, "x": 250, "y": 170 }
+        ],
+        "nodes": [20, 10, 30, 5, 15]
+      },
+      {
+        "heading": "Perform rotations to maintain Red-Black Tree properties.",
+        "difficulty": "hard",
+        "targets": [
+          { "value": 25, "x": 300, "y": 30 },
+          { "value": 20, "x": 200, "y": 100 },
+          { "value": 30, "x": 400, "y": 100 },
+          { "value": 15, "x": 150, "y": 170 },
+          { "value": 22, "x": 250, "y": 170 },
+          { "value": 28, "x": 350, "y": 170 },
+          { "value": 35, "x": 450, "y": 170 }
+        ],
+        "nodes": [25, 20, 30, 15, 22, 28, 35]
+      },
+      {
+        "heading": "Insert nodes and fix violations to form a valid Red-Black Tree.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 40, "x": 300, "y": 30 },
+          { "value": 30, "x": 200, "y": 100 },
+          { "value": 50, "x": 400, "y": 100 },
+          { "value": 20, "x": 150, "y": 170 },
+          { "value": 35, "x": 250, "y": 170 },
+          { "value": 45, "x": 350, "y": 170 },
+          { "value": 60, "x": 450, "y": 170 }
+        ],
+        "nodes": [40, 30, 50, 20, 35, 45, 60]
+      },
+      {
+        "heading": "Construct a balanced Red-Black Tree with these nodes.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 50, "x": 300, "y": 30 },
+          { "value": 40, "x": 200, "y": 100 },
+          { "value": 60, "x": 400, "y": 100 },
+          { "value": 35, "x": 150, "y": 170 },
+          { "value": 45, "x": 250, "y": 170 },
+          { "value": 55, "x": 350, "y": 170 },
+          { "value": 65, "x": 450, "y": 170 }
+        ],
+        "nodes": [50, 40, 60, 35, 45, 55, 65]
+      },
+      {
+        "heading": "Arrange nodes into a Threaded Binary Tree.",
+        "difficulty": "easy",
+        "targets": [
+          { "value": 10, "x": 300, "y": 30 },
+          { "value": 5, "x": 200, "y": 100 },
+          { "value": 15, "x": 400, "y": 100 }
+        ],
+        "nodes": [10, 5, 15]
+      },
+      {
+        "heading": "Convert the tree to a Threaded Binary Tree.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 20, "x": 300, "y": 30 },
+          { "value": 10, "x": 200, "y": 100 },
+          { "value": 30, "x": 400, "y": 100 },
+          { "value": 5, "x": 150, "y": 170 },
+          { "value": 15, "x": 250, "y": 170 }
+        ],
+        "nodes": [20, 10, 30, 5, 15]
+      },
+      {
+        "heading": "Construct a balanced Threaded Binary Tree.",
+        "difficulty": "hard",
+        "targets": [
+          { "value": 25, "x": 300, "y": 30 },
+          { "value": 20, "x": 200, "y": 100 },
+          { "value": 30, "x": 400, "y": 100 },
+          { "value": 15, "x": 150, "y": 170 },
+          { "value": 22, "x": 250, "y": 170 },
+          { "value": 28, "x": 350, "y": 170 },
+          { "value": 35, "x": 450, "y": 170 }
+        ],
+        "nodes": [25, 20, 30, 15, 22, 28, 35]
+      },
+      {
+        "heading": "Ensure the tree is correctly threaded.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 40, "x": 300, "y": 30 },
+          { "value": 30, "x": 200, "y": 100 },
+          { "value": 50, "x": 400, "y": 100 },
+          { "value": 20, "x": 150, "y": 170 },
+          { "value": 35, "x": 250, "y": 170 },
+          { "value": 45, "x": 350, "y": 170 },
+          { "value": 60, "x": 450, "y": 170 }
+        ],
+        "nodes": [40, 30, 50, 20, 35, 45, 60]
+      },
+      {
+        "heading": "Build a Threaded Binary Tree using in-order threading.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 10, "x": 300, "y": 30 },
+          { "value": 5, "x": 200, "y": 100 },
+          { "value": 15, "x": 400, "y": 100 },
+          { "value": 2, "x": 150, "y": 170 },
+          { "value": 7, "x": 250, "y": 170 },
+          { "value": 12, "x": 350, "y": 170 },
+          { "value": 18, "x": 450, "y": 170 }
+        ],
+        "nodes": [10, 5, 15, 2, 7, 12, 18]
+      },
+      {
+        "heading": "Arrange nodes to form a Max-Heap.",
+        "difficulty": "easy",
+        "targets": [
+          { "value": 50, "x": 300, "y": 30 },
+          { "value": 30, "x": 200, "y": 100 },
+          { "value": 40, "x": 400, "y": 100 },
+          { "value": 10, "x": 150, "y": 170 },
+          { "value": 20, "x": 250, "y": 170 },
+          { "value": 35, "x": 350, "y": 170 },
+          { "value": 45, "x": 450, "y": 170 }
+        ],
+        "nodes": [50, 30, 40, 10, 20, 35, 45]
+      },
+      {
+        "heading": "Construct a Min-Heap from the given nodes.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 10, "x": 300, "y": 30 },
+          { "value": 20, "x": 200, "y": 100 },
+          { "value": 15, "x": 400, "y": 100 },
+          { "value": 25, "x": 150, "y": 170 },
+          { "value": 30, "x": 250, "y": 170 },
+          { "value": 35, "x": 350, "y": 170 },
+          { "value": 40, "x": 450, "y": 170 }
+        ],
+        "nodes": [10, 20, 15, 25, 30, 35, 40]
+      },
+      {
+        "heading": "Convert the tree into a Max-Heap.",
+        "difficulty": "hard",
+        "targets": [
+          { "value": 60, "x": 300, "y": 30 },
+          { "value": 50, "x": 200, "y": 100 },
+          { "value": 55, "x": 400, "y": 100 },
+          { "value": 45, "x": 150, "y": 170 },
+          { "value": 40, "x": 250, "y": 170 },
+          { "value": 35, "x": 350, "y": 170 },
+          { "value": 30, "x": 450, "y": 170 }
+        ],
+        "nodes": [60, 50, 55, 45, 40, 35, 30]
+      },
+      {
+        "heading": "Rebuild the Heap after inserting a new node.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 20, "x": 300, "y": 30 },
+          { "value": 15, "x": 200, "y": 100 },
+          { "value": 10, "x": 400, "y": 100 },
+          { "value": 5, "x": 150, "y": 170 },
+          { "value": 7, "x": 250, "y": 170 },
+          { "value": 8, "x": 350, "y": 170 },
+          { "value": 9, "x": 450, "y": 170 }
+        ],
+        "nodes": [20, 15, 10, 5, 7, 8, 9]
+      },
+      {
+        "heading": "Maintain the Heap properties after deletion.",
+        "difficulty": "medium",
+        "targets": [
+          { "value": 30, "x": 300, "y": 30 },
+          { "value": 25, "x": 200, "y": 100 },
+          { "value": 20, "x": 400, "y": 100 },
+          { "value": 15, "x": 150, "y": 170 },
+          { "value": 10, "x": 250, "y": 170 },
+          { "value": 5, "x": 350, "y": 170 },
+          { "value": 3, "x": 450, "y": 170 }
+        ],
+        "nodes": [30, 25, 20, 15, 10, 5, 3]
+      }
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+            
+    ]
+  }
+  

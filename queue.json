@@ -1,0 +1,21 @@
+{
+    "levels": {
+      "1": {
+        "numbers": [10, 20, 30, 40]
+      },
+      "2": {
+        "numbers": [5, 15, 25, 35]
+      },
+      "3": {
+        "numbers": [1, 2, 3, 4]
+      }
+    },
+    "messages": {
+      "startSequence": "Memorize the sequence!",
+      "correctGuess": "Correct!",
+      "incorrectGuess": "Incorrect! Try again.",
+      "levelComplete": "Level {level} complete! Moving to next level...",
+      "gameOver": "Game Over!"
+    }
+  }
+  

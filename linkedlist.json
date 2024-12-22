@@ -1,0 +1,27 @@
+[
+    {
+      "question": "What is the value of the 2nd node from the end? 1, 2, 3, 4, 5",
+      "answer": 4,
+      "options": [2, 3, 4, 5],
+      "start": []
+    },
+    {
+      "question": "How many nodes are in the linked list? 1, 2, 3, 4, 5",
+      "answer": 5,
+      "options": [4, 5, 6, 7],
+      "start": []
+    },
+    {
+      "question": "Which operation adds a node at the end?",
+      "answer": "Insertion",
+      "options": ["Insertion", "Deletion", "Traversal", "Searching"],
+      "start": []
+    },
+    {
+      "question": "What is the length of the linked list? 1, 2, 3, 4, 5",
+      "answer": 5,
+      "options": [3, 4, 5, 6],
+      "start": []
+    }
+  ]
+  
