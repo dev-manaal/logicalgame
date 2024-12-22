@@ -2,7 +2,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,12 +44,13 @@ body {
   /* Game Types */
   .game-grid {
     display: grid;
-    gap: 15px;
+    gap: 10px;
     padding: 10px;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
   
   .game-card {
+    
     display: flex;
     flex-direction: column;
 /*     padding: 15px 2px 2px 2px; */
@@ -267,7 +268,7 @@ body {
   text-align: center;
 }
 #arrgame{
-  padding: 50px;
+  /* padding: 50px; */
   margin-top: 90px;
 }
 
@@ -294,8 +295,8 @@ body {
 #arrayContainer div {
   background: linear-gradient(135deg, #589449, #175736);
   padding: 15px;
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -353,8 +354,8 @@ body {
   }
 
   #arrayContainer div {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     font-size: 1.3rem;
   }
 }
@@ -372,8 +373,8 @@ body {
 
   #arrayContainer div {
     padding: 2px 0 2px 0;
-    width: 35px;
-    height: 35px;
+    width: 60px;
+    height: 60px;
     font-size: 1.2rem;
   }
 }
@@ -407,7 +408,7 @@ body {
 }
 #linkedgame{
   margin-top: 50px;
-  padding: 30px;
+  padding: 5px;
 }
 
 #linked-list {
@@ -428,7 +429,7 @@ body {
   font-size: 50PX;
   color: #555;
   font-weight: bold;
-  margin-bottom: 10PX;
+  margin-bottom: 30PX;
 }
 
 #options {
@@ -1031,20 +1032,20 @@ body {
   /* Target Circles */
   .target {
     position: absolute;
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     border: 2px dashed #800000;
     border-radius: 50%;
     top: 50%;
     left: 50%;
-    transform: translate(-398%, -10%); /* Center the circles */
+    transform: translate(-444%, -10%); /* Center the circles */
   }
    /* Tree Container */
    #treeContainer {
     position: relative; /* Ensure it has the correct positioning context */
     width: 100%; /* Full width on mobile */
     height: 100vh; /* Use viewport width for better aspect ratio on mobile */
-    max-height: 250px; /* Limit max height */
+    max-height: 280px; /* Limit max height */
     border: 2px dashed white;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.1);
@@ -1058,9 +1059,9 @@ body {
 
   /* Node (Draggable Elements) */
 .node {
-    width: 40px;
-    height: 40px;
-    font-size: 16px;
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
     font-weight: bold;
     color: #fff;
     background: #c30010;
@@ -1131,7 +1132,7 @@ body {
 /* Puzzle Container */
 .puzzle-container {
   display: grid;
-  gap: 10px; /* Spacing between tiles */
+  gap: 1px; /* Spacing between tiles */
   justify-content: center;
   align-items: center;
   margin: 20px auto;
