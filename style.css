@@ -52,7 +52,7 @@ body {
   .game-card {
     display: flex;
     flex-direction: column;
-    padding: 15px 2px 2px 2px;
+/*     padding: 15px 2px 2px 2px; */
     border: 5px solid #000000;
     border-radius: 20px;
     background: #ffffff;
